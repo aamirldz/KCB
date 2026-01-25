@@ -9,8 +9,8 @@ export default function Hero() {
             {/* Background Gradient */}
             <div className="absolute inset-0">
                 <div className="absolute inset-0 bg-gradient-to-br from-crimson/10 via-transparent to-gold/5" />
-                <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-crimson/15 rounded-full blur-[100px]" />
-                <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-gold/10 rounded-full blur-[80px]" />
+                <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-crimson/15 rounded-full blur-[100px] animate-pulse" />
+                <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-gold/10 rounded-full blur-[80px] animate-pulse" style={{ animationDelay: '1s' }} />
             </div>
 
             {/* Main Content */}
@@ -48,54 +48,63 @@ export default function Hero() {
                             {/* CTA Buttons */}
                             <div className="flex flex-wrap justify-center lg:justify-start gap-3">
                                 <Link href="/order">
-                                    <button className="px-6 md:px-8 py-3 bg-crimson text-white font-semibold text-xs md:text-sm tracking-wider uppercase hover:bg-crimson-light transition-all">
+                                    <button className="px-6 md:px-8 py-3 bg-crimson text-white font-semibold text-xs md:text-sm tracking-wider uppercase hover:bg-crimson-light hover:shadow-[0_0_20px_rgba(185,28,28,0.5)] transition-all">
                                         Order Now
                                     </button>
                                 </Link>
                                 <Link href="/reservation">
-                                    <button className="px-6 md:px-8 py-3 border-2 border-gold text-gold font-semibold text-xs md:text-sm tracking-wider uppercase hover:bg-gold hover:text-black transition-all">
+                                    <button className="px-6 md:px-8 py-3 border-2 border-gold text-gold font-semibold text-xs md:text-sm tracking-wider uppercase hover:bg-gold hover:text-black hover:shadow-[0_0_20px_rgba(217,119,6,0.4)] transition-all">
                                         Book Table
                                     </button>
                                 </Link>
                             </div>
                         </div>
 
-                        {/* Right - Clean Visual Card */}
+                        {/* Right - Enhanced Visual Card with Glow Effects */}
                         <div className="flex justify-center order-1 lg:order-2">
                             <div className="relative w-full max-w-sm">
-                                {/* Main Card */}
-                                <div className="relative bg-gradient-to-br from-charcoal to-dark-gray border border-gold/30 p-8 shadow-lg">
-                                    {/* Corner Decorations */}
-                                    <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold" />
-                                    <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-gold" />
-                                    <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-gold" />
-                                    <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold" />
+                                {/* Outer Glow Ring */}
+                                <div className="absolute -inset-3 bg-gradient-to-r from-crimson/30 via-gold/20 to-crimson/30 rounded-lg blur-xl opacity-70 animate-pulse" />
 
-                                    {/* Chinese Title */}
+                                {/* Inner Glow */}
+                                <div className="absolute -inset-1 bg-gradient-to-br from-gold/10 to-crimson/10 rounded-lg blur-md" />
+
+                                {/* Main Card */}
+                                <div className="relative bg-gradient-to-br from-charcoal via-dark-gray to-charcoal border-2 border-gold/40 p-8 shadow-[0_0_40px_rgba(217,119,6,0.15)]">
+                                    {/* Glowing Corner Decorations */}
+                                    <div className="absolute -top-0.5 -left-0.5 w-8 h-8 border-t-2 border-l-2 border-gold shadow-[0_0_10px_rgba(217,119,6,0.4)]" />
+                                    <div className="absolute -top-0.5 -right-0.5 w-8 h-8 border-t-2 border-r-2 border-gold shadow-[0_0_10px_rgba(217,119,6,0.4)]" />
+                                    <div className="absolute -bottom-0.5 -left-0.5 w-8 h-8 border-b-2 border-l-2 border-gold shadow-[0_0_10px_rgba(217,119,6,0.4)]" />
+                                    <div className="absolute -bottom-0.5 -right-0.5 w-8 h-8 border-b-2 border-r-2 border-gold shadow-[0_0_10px_rgba(217,119,6,0.4)]" />
+
+                                    {/* Chinese Title with Glow */}
                                     <div className="text-center mb-3">
-                                        <span className="chinese text-gold text-3xl sm:text-4xl font-bold tracking-wider">
+                                        <span className="chinese text-gold text-3xl sm:text-4xl font-bold tracking-wider drop-shadow-[0_0_15px_rgba(217,119,6,0.4)]">
                                             国王中国碗
                                         </span>
                                     </div>
 
                                     {/* Est Badge */}
                                     <div className="text-center mb-5">
-                                        <span className="inline-block px-3 py-1 bg-crimson/20 border border-crimson/40 text-crimson text-[10px] tracking-[0.2em] uppercase">
+                                        <span className="inline-block px-3 py-1 bg-crimson/20 border border-crimson/40 text-crimson text-[10px] tracking-[0.2em] uppercase shadow-[0_0_10px_rgba(185,28,28,0.2)]">
                                             Est. 2019
                                         </span>
                                     </div>
 
-                                    {/* Bowl Emoji */}
-                                    <div className="text-center my-6">
-                                        <span className="text-7xl sm:text-8xl">🍜</span>
+                                    {/* Bowl Emoji with Glow */}
+                                    <div className="text-center my-6 relative">
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <div className="w-24 h-24 bg-crimson/20 rounded-full blur-2xl animate-pulse" />
+                                        </div>
+                                        <span className="text-7xl sm:text-8xl relative z-10 drop-shadow-[0_0_20px_rgba(185,28,28,0.4)]">🍜</span>
                                     </div>
 
-                                    {/* Cuisine Tags */}
+                                    {/* Cuisine Tags with Hover Glow */}
                                     <div className="grid grid-cols-4 gap-2">
                                         {['Chinese', 'Korean', 'Nepali', 'Tibetan'].map((cuisine) => (
                                             <div
                                                 key={cuisine}
-                                                className="py-2 bg-crimson/10 border border-crimson/20 text-center"
+                                                className="py-2.5 bg-gradient-to-br from-crimson/15 to-crimson/5 border border-crimson/25 text-center hover:border-crimson/50 hover:shadow-[0_0_12px_rgba(185,28,28,0.3)] transition-all cursor-default"
                                             >
                                                 <span className="text-cream text-xs font-medium">{cuisine}</span>
                                             </div>
@@ -103,10 +112,10 @@ export default function Hero() {
                                     </div>
                                 </div>
 
-                                {/* 5+ Years Badge - Bottom Right Corner */}
-                                <div className="absolute -bottom-3 -right-3 bg-crimson px-3 py-2 shadow-md">
-                                    <span className="text-white font-bold text-lg block leading-none">5+</span>
-                                    <span className="text-white/70 text-[9px] uppercase">Years</span>
+                                {/* 5+ Years Badge with Glow */}
+                                <div className="absolute -bottom-3 -right-3 bg-gradient-to-br from-crimson to-crimson-dark px-4 py-2.5 shadow-[0_0_20px_rgba(185,28,28,0.5)] border border-crimson-light/30">
+                                    <span className="text-white font-bold text-xl block leading-none">5+</span>
+                                    <span className="text-white/70 text-[9px] uppercase tracking-wide">Years</span>
                                 </div>
                             </div>
                         </div>
@@ -124,8 +133,8 @@ export default function Hero() {
                             { value: '5+', label: 'Years' },
                             { value: '10K+', label: 'Guests' },
                         ].map((stat) => (
-                            <div key={stat.label}>
-                                <span className="text-gold font-display text-lg md:text-2xl font-bold block">{stat.value}</span>
+                            <div key={stat.label} className="group">
+                                <span className="text-gold font-display text-lg md:text-2xl font-bold block group-hover:drop-shadow-[0_0_10px_rgba(217,119,6,0.5)] transition-all">{stat.value}</span>
                                 <span className="text-gray text-[10px] md:text-xs uppercase tracking-wider">{stat.label}</span>
                             </div>
                         ))}
