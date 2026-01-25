@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
 import { getPopularItems } from '@/data/menu';
 import { formatPrice } from '@/lib/utils';
 import { useCart } from '@/context/CartContext';
@@ -32,10 +31,10 @@ export default function PopularBowls() {
     };
 
     return (
-        <section className="py-16 bg-black">
+        <section className="py-20 bg-black">
             <div className="container">
                 {/* Header */}
-                <div className="flex items-end justify-between gap-4 mb-8">
+                <div className="flex items-end justify-between gap-4 mb-10">
                     <div>
                         <span className="text-gold text-xs font-semibold tracking-widest uppercase">Most Ordered</span>
                         <h2 className="text-white text-3xl md:text-4xl font-display mt-1">Customer Favorites</h2>
@@ -51,36 +50,32 @@ export default function PopularBowls() {
                 </div>
 
                 {/* Horizontal Scroll */}
-                <div ref={scrollRef} className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4">
-                    {popularItems.map((item, index) => (
-                        <motion.div
+                <div ref={scrollRef} className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4">
+                    {popularItems.map((item) => (
+                        <div
                             key={item.id}
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.05 }}
-                            className="flex-shrink-0 w-64 bg-charcoal border border-gray/10 group hover:border-gold/30 transition-all"
+                            className="flex-shrink-0 w-72 bg-charcoal border border-gray/10 group hover:border-gold/30 transition-all"
                         >
-                            <div className="h-32 bg-gradient-to-br from-gold/10 to-transparent flex items-center justify-center relative">
+                            <div className="h-36 bg-gradient-to-br from-gold/10 to-transparent flex items-center justify-center relative">
                                 <span className="text-5xl group-hover:scale-110 transition-transform">{getCategoryEmoji(item.category)}</span>
                                 <span className="absolute top-2 right-2 px-2 py-0.5 bg-gold text-black text-[10px] font-bold uppercase">
                                     Popular
                                 </span>
                             </div>
-                            <div className="p-4">
-                                <h4 className="text-white text-sm font-semibold mb-1 line-clamp-1">{item.name}</h4>
-                                <p className="text-gray text-xs mb-3 line-clamp-1">{item.description}</p>
+                            <div className="p-5">
+                                <h4 className="text-white text-sm font-semibold mb-2 line-clamp-1">{item.name}</h4>
+                                <p className="text-gray text-xs mb-4 line-clamp-1">{item.description}</p>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-gold font-display">{formatPrice(item.price)}</span>
+                                    <span className="text-gold font-display text-lg">{formatPrice(item.price)}</span>
                                     <button
                                         onClick={() => addToCart(item)}
-                                        className="px-3 py-1.5 bg-crimson text-white text-xs font-semibold hover:bg-crimson-light transition-all"
+                                        className="px-4 py-2 bg-crimson text-white text-xs font-semibold hover:bg-crimson-light transition-all"
                                     >
                                         Add
                                     </button>
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

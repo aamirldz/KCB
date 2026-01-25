@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { getChefSpecials } from '@/data/menu';
 import { formatPrice, getSpiceLevelEmoji } from '@/lib/utils';
@@ -21,10 +20,10 @@ export default function SignatureDishes() {
     };
 
     return (
-        <section className="py-16 bg-charcoal">
+        <section className="py-20 bg-charcoal">
             <div className="container">
-                {/* Header - Compact */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
                     <div>
                         <span className="text-crimson text-xs font-semibold tracking-widest uppercase">Chef&apos;s Selection</span>
                         <h2 className="text-white text-3xl md:text-4xl font-display mt-1">Signature Dishes</h2>
@@ -34,19 +33,15 @@ export default function SignatureDishes() {
                     </Link>
                 </div>
 
-                {/* Cards - Compact Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {chefSpecials.map((dish, index) => (
-                        <motion.div
+                {/* Cards Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {chefSpecials.map((dish) => (
+                        <div
                             key={dish.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="group bg-dark-gray border border-gray/10 hover:border-crimson/40 transition-all"
+                            className="group bg-dark-gray border border-gray/10 hover:border-crimson/40 transition-all animate-fade-in"
                         >
                             {/* Image */}
-                            <div className="h-36 bg-gradient-to-br from-crimson/10 to-transparent flex items-center justify-center relative">
+                            <div className="h-40 bg-gradient-to-br from-crimson/10 to-transparent flex items-center justify-center relative">
                                 <span className="text-6xl group-hover:scale-110 transition-transform">{getCategoryEmoji(dish.category)}</span>
                                 <span className="absolute top-2 right-2 px-2 py-0.5 bg-crimson text-white text-[10px] font-bold uppercase">
                                     Chef&apos;s Pick
@@ -57,25 +52,25 @@ export default function SignatureDishes() {
                             </div>
 
                             {/* Content */}
-                            <div className="p-4">
-                                <div className="flex items-start justify-between gap-2 mb-1">
+                            <div className="p-5">
+                                <div className="flex items-start justify-between gap-2 mb-2">
                                     <h4 className="text-white text-sm font-semibold line-clamp-1 group-hover:text-gold transition-colors">
                                         {dish.name}
                                     </h4>
                                     {dish.spiceLevel > 0 && <span className="text-xs">{getSpiceLevelEmoji(dish.spiceLevel)}</span>}
                                 </div>
-                                <p className="text-gray text-xs mb-3 line-clamp-2">{dish.description}</p>
+                                <p className="text-gray text-xs mb-4 line-clamp-2">{dish.description}</p>
                                 <div className="flex items-center justify-between">
                                     <span className="text-gold font-display text-lg">{formatPrice(dish.price)}</span>
                                     <button
                                         onClick={() => addToCart(dish)}
-                                        className="px-3 py-1.5 bg-crimson/10 text-crimson text-xs font-semibold hover:bg-crimson hover:text-white transition-all"
+                                        className="px-4 py-2 bg-crimson/10 text-crimson text-xs font-semibold hover:bg-crimson hover:text-white transition-all"
                                     >
                                         Add
                                     </button>
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>
