@@ -31,7 +31,7 @@ export default function PopularBowls() {
     };
 
     return (
-        <section className="mt-24 md:mt-32 lg:mt-40 py-24 bg-black relative overflow-hidden">
+        <section style={{ marginTop: '10rem' }} className="py-24 bg-black relative overflow-hidden">
             {/* Top Divider Line */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
 
