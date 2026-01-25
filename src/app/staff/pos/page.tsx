@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { menuItems } from '@/data/menu';
 import { MENU_CATEGORIES } from '@/types/menu';
-import { OrderItem, OrderType, MenuItem } from '@/types/order';
+import { OrderItem, OrderType } from '@/types/order';
 import { useOrders } from '@/context/OrderContext';
 import { generateId, formatPrice } from '@/lib/utils';
 
@@ -125,8 +125,8 @@ export default function POSPage() {
                                 key={cat.id}
                                 onClick={() => setActiveCategory(cat.id)}
                                 className={`px-3 py-1.5 text-xs font-medium whitespace-nowrap transition-all ${activeCategory === cat.id
-                                        ? 'bg-crimson text-white'
-                                        : 'bg-charcoal text-gray hover:text-white'
+                                    ? 'bg-crimson text-white'
+                                    : 'bg-charcoal text-gray hover:text-white'
                                     }`}
                             >
                                 {cat.icon} {cat.name}
