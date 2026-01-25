@@ -1,0 +1,13 @@
+name = "kcb"
+main = ".open-next/worker.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# Uncomment to add custom domain
+# routes = [
+#   { pattern = "yourdomain.com", custom_domain = true }
+# ]
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
