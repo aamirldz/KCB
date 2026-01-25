@@ -26,15 +26,15 @@ export default function MenuFilter({
     ];
 
     return (
-        <div className="bg-dark-gray/50 border border-gray/10 p-6 md:p-8">
+        <div className="space-y-6">
             {/* Search Bar */}
-            <div className="relative max-w-xl mx-auto mb-8">
+            <div className="relative max-w-lg mx-auto">
                 <input
                     type="text"
                     placeholder="Search dishes..."
                     value={searchQuery}
                     onChange={(e) => onSearchChange(e.target.value)}
-                    className="w-full px-5 py-4 pl-14 bg-charcoal border border-gray/20 text-white placeholder-gray focus:border-gold/50 focus:outline-none transition-all"
+                    className="w-full px-5 py-4 pl-14 bg-dark-gray/80 border border-gray/20 text-white placeholder-gray focus:border-gold/50 focus:outline-none focus:shadow-[0_0_15px_rgba(217,119,6,0.15)] transition-all"
                 />
                 <svg
                     className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray"
@@ -55,27 +55,27 @@ export default function MenuFilter({
             </div>
 
             {/* Category Tabs */}
-            <div className="mb-6">
-                <div className="flex flex-wrap justify-center gap-2">
-                    {allCategories.map((category) => (
-                        <button
-                            key={category.id}
-                            onClick={() => onCategoryChange(category.id)}
-                            className={`px-4 py-2.5 text-sm font-medium transition-all flex items-center gap-2 ${activeCategory === category.id
-                                    ? 'bg-crimson text-white'
-                                    : 'bg-charcoal text-gray hover:text-white hover:bg-gray/20 border border-gray/10'
-                                }`}
-                        >
-                            <span className="text-base">{category.icon}</span>
-                            <span>{category.name}</span>
-                        </button>
-                    ))}
-                </div>
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+                {allCategories.map((category) => (
+                    <button
+                        key={category.id}
+                        onClick={() => onCategoryChange(category.id)}
+                        className={`group px-4 md:px-6 py-3 text-sm font-medium tracking-wide transition-all duration-300 flex items-center gap-2 border ${activeCategory === category.id
+                                ? 'bg-gradient-to-r from-crimson to-crimson-dark text-white border-crimson shadow-[0_0_20px_rgba(185,28,28,0.3)]'
+                                : 'bg-dark-gray/50 text-light-gray border-gray/20 hover:border-gold/40 hover:text-white hover:shadow-[0_0_15px_rgba(217,119,6,0.1)]'
+                            }`}
+                    >
+                        <span className={`text-lg transition-transform ${activeCategory === category.id ? 'scale-110' : 'group-hover:scale-110'}`}>
+                            {category.icon}
+                        </span>
+                        <span className="hidden sm:inline">{category.name}</span>
+                    </button>
+                ))}
             </div>
 
             {/* Veg Toggle */}
-            <div className="flex items-center justify-center">
-                <label className="flex items-center gap-3 cursor-pointer">
+            <div className="flex items-center justify-center gap-6">
+                <label className="flex items-center gap-3 cursor-pointer group px-5 py-3 bg-dark-gray/30 border border-gray/10 hover:border-green-500/30 transition-all">
                     <div className="relative">
                         <input
                             type="checkbox"
@@ -84,19 +84,25 @@ export default function MenuFilter({
                             className="sr-only"
                         />
                         <div
-                            className={`w-12 h-6 transition-colors duration-300 ${vegOnly ? 'bg-green-600' : 'bg-charcoal border border-gray/30'
+                            className={`w-14 h-7 rounded-full transition-colors duration-300 ${vegOnly ? 'bg-green-600 shadow-[0_0_10px_rgba(34,197,94,0.4)]' : 'bg-dark-gray border border-gray/30'
                                 }`}
                         >
                             <div
-                                className={`absolute top-0.5 w-5 h-5 bg-white transition-all duration-300 ${vegOnly ? 'left-[26px]' : 'left-0.5'
+                                className={`absolute top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 shadow-md ${vegOnly ? 'left-8' : 'left-1'
                                     }`}
                             />
                         </div>
                     </div>
-                    <span className={`text-sm ${vegOnly ? 'text-green-400' : 'text-gray'}`}>
+                    <span className={`text-sm font-medium transition-colors ${vegOnly ? 'text-green-400' : 'text-light-gray group-hover:text-white'}`}>
                         🥬 Vegetarian Only
                     </span>
                 </label>
+
+                {searchQuery && (
+                    <span className="text-gray text-sm px-4 py-2 bg-dark-gray/30 border border-gray/10">
+                        Results for &quot;{searchQuery}&quot;
+                    </span>
+                )}
             </div>
         </div>
     );

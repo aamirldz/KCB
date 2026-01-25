@@ -24,24 +24,24 @@ export default function MenuPage() {
     }, [activeCategory, searchQuery, vegOnly]);
 
     return (
-        <div className="min-h-screen bg-black">
-            {/* Header with proper spacing for fixed navbar */}
-            <section className="pt-32 pb-8 relative overflow-hidden">
+        <div className="min-h-screen bg-black pt-20">
+            {/* Header with gradient background */}
+            <section className="relative py-16 overflow-hidden">
                 {/* Background decorations */}
                 <div className="absolute inset-0 bg-gradient-to-b from-crimson/10 via-transparent to-transparent" />
-                <div className="absolute top-20 left-1/4 w-80 h-80 bg-crimson/10 rounded-full blur-[120px]" />
-                <div className="absolute top-20 right-1/4 w-64 h-64 bg-gold/5 rounded-full blur-[100px]" />
+                <div className="absolute top-0 left-1/4 w-80 h-80 bg-crimson/10 rounded-full blur-[120px]" />
+                <div className="absolute top-0 right-1/4 w-64 h-64 bg-gold/5 rounded-full blur-[100px]" />
 
                 <div className="container relative z-10">
                     {/* Title */}
-                    <div className="text-center mb-10">
-                        <div className="inline-flex items-center gap-3 mb-3">
-                            <div className="h-px w-10 bg-gold/50" />
+                    <div className="text-center mb-12">
+                        <div className="inline-flex items-center gap-2 mb-4">
+                            <div className="h-px w-8 bg-gold/50" />
                             <span className="chinese text-gold text-xl">菜单</span>
-                            <div className="h-px w-10 bg-gold/50" />
+                            <div className="h-px w-8 bg-gold/50" />
                         </div>
-                        <h1 className="text-white text-4xl md:text-5xl font-display mb-3">Our Menu</h1>
-                        <p className="text-gray max-w-lg mx-auto">
+                        <h1 className="text-white text-4xl md:text-5xl font-display mb-4">Our Menu</h1>
+                        <p className="text-light-gray max-w-xl mx-auto">
                             Explore our curated selection of authentic Asian dishes
                         </p>
                     </div>
@@ -59,10 +59,10 @@ export default function MenuPage() {
             </section>
 
             {/* Menu Grid */}
-            <section className="py-10 bg-charcoal">
+            <section className="py-12 bg-gradient-to-b from-black to-charcoal">
                 <div className="container">
                     {/* Results count */}
-                    <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray/10">
+                    <div className="flex items-center justify-between mb-8">
                         <p className="text-gray text-sm">
                             Showing <span className="text-gold font-semibold">{filteredItems.length}</span> {filteredItems.length === 1 ? 'dish' : 'dishes'}
                         </p>
