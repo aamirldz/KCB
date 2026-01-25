@@ -10,12 +10,13 @@ export const metadata: Metadata = {
   keywords: "chinese restaurant, korean food, nepalese cuisine, tibetan food, asian restaurant, fine dining, order online, table reservation",
   icons: {
     icon: [
-      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-v2-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-v2-16.png', sizes: '16x16', type: 'image/png' },
     ],
-    apple: '/apple-touch-icon.png',
-    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon-v2.png',
+    shortcut: '/favicon-v2.ico',
   },
+  manifest: '/site.webmanifest',
   openGraph: {
     title: "King Chinese Bowl | Premium Asian Cuisine",
     description: "Experience the royal flavors of Asia. Premium Chinese, Korean, Nepalese & Tibetan cuisine.",
