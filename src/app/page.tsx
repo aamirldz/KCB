@@ -4,25 +4,41 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+
       {/* Spacer between Hero and Signature Dishes */}
-      <div className="h-32 md:h-48 lg:h-56 bg-gradient-to-b from-black to-charcoal flex items-center justify-center">
-        <div className="w-32 h-px bg-gradient-to-r from-transparent via-crimson/50 to-transparent" />
+      <div className="py-16 md:py-24 lg:py-32 bg-black flex flex-col items-center justify-center gap-4">
+        <div className="w-24 h-0.5 bg-crimson/60 rounded-full" />
+        <span className="text-crimson/40 text-xs tracking-[0.3em] uppercase">✦</span>
+        <div className="w-24 h-0.5 bg-crimson/60 rounded-full" />
       </div>
+
       <SignatureDishes />
+
       {/* Spacer between Signature Dishes and Customer Favorites */}
-      <div className="h-32 md:h-48 lg:h-56 bg-gradient-to-b from-charcoal to-black flex items-center justify-center">
-        <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+      <div className="py-16 md:py-24 lg:py-32 bg-black flex flex-col items-center justify-center gap-4">
+        <div className="w-24 h-0.5 bg-gold/60 rounded-full" />
+        <span className="text-gold/40 text-xs tracking-[0.3em] uppercase">✦</span>
+        <div className="w-24 h-0.5 bg-gold/60 rounded-full" />
       </div>
+
       <PopularBowls />
+
       {/* Spacer between Customer Favorites and Dining Experience */}
-      <div className="h-32 md:h-48 lg:h-56 bg-gradient-to-b from-black to-charcoal flex items-center justify-center">
-        <div className="w-32 h-px bg-gradient-to-r from-transparent via-crimson/50 to-transparent" />
+      <div className="py-16 md:py-24 lg:py-32 bg-black flex flex-col items-center justify-center gap-4">
+        <div className="w-24 h-0.5 bg-crimson/60 rounded-full" />
+        <span className="text-crimson/40 text-xs tracking-[0.3em] uppercase">✦</span>
+        <div className="w-24 h-0.5 bg-crimson/60 rounded-full" />
       </div>
+
       <DiningExperience />
+
       {/* Spacer between Dining Experience and CTA Section */}
-      <div className="h-32 md:h-48 lg:h-56 bg-gradient-to-b from-charcoal to-black flex items-center justify-center">
-        <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+      <div className="py-16 md:py-24 lg:py-32 bg-black flex flex-col items-center justify-center gap-4">
+        <div className="w-24 h-0.5 bg-gold/60 rounded-full" />
+        <span className="text-gold/40 text-xs tracking-[0.3em] uppercase">✦</span>
+        <div className="w-24 h-0.5 bg-gold/60 rounded-full" />
       </div>
+
       <CTASection />
     </>
   );
