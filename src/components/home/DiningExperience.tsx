@@ -12,7 +12,10 @@ const features = [
 
 export default function DiningExperience() {
     return (
-        <section className="pt-20 pb-24 bg-charcoal relative z-10 overflow-hidden">
+        <section className="mt-20 pt-20 pb-24 bg-charcoal relative z-10 overflow-hidden">
+            {/* Top Divider Line */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-crimson/40 to-transparent" />
+
             {/* Background decoration */}
             <div className="absolute top-0 left-1/2 w-[500px] h-[500px] bg-crimson/5 rounded-full blur-[150px] -translate-x-1/2" />
 

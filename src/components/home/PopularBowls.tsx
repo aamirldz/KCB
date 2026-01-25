@@ -31,7 +31,10 @@ export default function PopularBowls() {
     };
 
     return (
-        <section className="pt-20 pb-24 bg-black relative overflow-hidden">
+        <section className="mt-20 pt-20 pb-24 bg-black relative overflow-hidden">
+            {/* Top Divider Line */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+
             {/* Background decoration */}
             <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[200px] -translate-y-1/2" />
 
