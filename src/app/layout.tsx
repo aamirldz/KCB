@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   title: "King Chinese Bowl | Premium Asian Cuisine",
   description: "Experience the royal flavors of Asia at King Chinese Bowl. Premium Chinese, Korean, Nepalese & Tibetan cuisine in an elegant dining atmosphere. Order online or reserve your table.",
   keywords: "chinese restaurant, korean food, nepalese cuisine, tibetan food, asian restaurant, fine dining, order online, table reservation",
+  icons: {
+    icon: [
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico',
+  },
   openGraph: {
     title: "King Chinese Bowl | Premium Asian Cuisine",
     description: "Experience the royal flavors of Asia. Premium Chinese, Korean, Nepalese & Tibetan cuisine.",
