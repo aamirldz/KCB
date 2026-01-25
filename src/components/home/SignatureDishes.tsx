@@ -20,7 +20,7 @@ export default function SignatureDishes() {
     };
 
     return (
-        <section className="mt-20 pt-20 pb-24 bg-charcoal relative overflow-hidden">
+        <section className="mt-32 pt-20 pb-24 bg-charcoal relative overflow-hidden">
             {/* Top Divider Line */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-crimson/40 to-transparent" />
 
