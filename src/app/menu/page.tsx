@@ -24,7 +24,7 @@ export default function MenuPage() {
     }, [activeCategory, searchQuery, vegOnly]);
 
     return (
-        <div className="min-h-screen bg-black pt-28">
+        <div className="min-h-screen bg-black pt-32">
             {/* Header with gradient background */}
             <section className="relative py-12 overflow-hidden">
                 {/* Background decorations */}
