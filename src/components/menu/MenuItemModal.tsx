@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
 import { MenuItem, SpiceLevel } from '@/types/menu';
 import { formatPrice, getSpiceLevelEmoji, getSpiceLevelLabel } from '@/lib/utils';
 import Modal from '@/components/ui/Modal';
@@ -94,8 +93,8 @@ export default function MenuItemModal({ item, isOpen, onClose }: MenuItemModalPr
                                     key={level}
                                     onClick={() => setSpiceLevel(level as SpiceLevel)}
                                     className={`flex-1 py-2 px-3 rounded-lg border text-sm transition-all ${spiceLevel === level
-                                            ? 'bg-imperial-red border-imperial-red text-white'
-                                            : 'border-royal-gold/20 text-text-secondary hover:border-royal-gold/50'
+                                        ? 'bg-imperial-red border-imperial-red text-white'
+                                        : 'border-royal-gold/20 text-text-secondary hover:border-royal-gold/50'
                                         }`}
                                 >
                                     {level === 0 ? 'No Spice' : getSpiceLevelEmoji(level)}

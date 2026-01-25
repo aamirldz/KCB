@@ -12,7 +12,7 @@ interface POSMenuGridProps {
     activeCategory: string;
 }
 
-export default function POSMenuGrid({ items, onAddItem, searchQuery, activeCategory }: POSMenuGridProps) {
+export default function POSMenuGrid({ items, onAddItem, searchQuery }: POSMenuGridProps) {
     const getCategoryEmoji = (category: string) => {
         switch (category) {
             case 'bowls': return '🍜';

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { StaffOrder, OrderStatus } from '@/types/order';
-import { formatPrice, formatTime } from '@/lib/utils';
+import { formatTime } from '@/lib/utils';
 import OrderStatusBadge from './OrderStatusBadge';
 
 interface KitchenOrderCardProps {
@@ -85,10 +85,10 @@ export default function KitchenOrderCard({ order, onUpdateStatus, onUpdateItemSt
                     <div
                         key={item.id}
                         className={`flex items-center gap-3 p-3 border transition-all ${item.status === 'ready'
-                                ? 'bg-green-500/10 border-green-500/30'
-                                : item.status === 'preparing'
-                                    ? 'bg-gold/10 border-gold/30'
-                                    : 'bg-dark-gray border-gray/20'
+                            ? 'bg-green-500/10 border-green-500/30'
+                            : item.status === 'preparing'
+                                ? 'bg-gold/10 border-gold/30'
+                                : 'bg-dark-gray border-gray/20'
                             }`}
                     >
                         {/* Item info */}

@@ -3539,18 +3539,13 @@
       "imports": [],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/app/order/page_client-reference-manifest.js": {
-      "bytes": 9574,
-      "imports": [],
-      "format": "cjs"
-    },
     ".open-next/server-functions/default/.next/server/app/menu/page_client-reference-manifest.js": {
       "bytes": 9548,
       "imports": [],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/app/contact/page_client-reference-manifest.js": {
-      "bytes": 9507,
+    ".open-next/server-functions/default/.next/server/app/order/page_client-reference-manifest.js": {
+      "bytes": 9574,
       "imports": [],
       "format": "cjs"
     },
@@ -3559,8 +3554,8 @@
       "imports": [],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/app/_not-found/page_client-reference-manifest.js": {
-      "bytes": 8459,
+    ".open-next/server-functions/default/.next/server/app/contact/page_client-reference-manifest.js": {
+      "bytes": 9507,
       "imports": [],
       "format": "cjs"
     },
@@ -3574,13 +3569,18 @@
       "imports": [],
       "format": "cjs"
     },
+    ".open-next/server-functions/default/.next/server/app/staff/kitchen/page_client-reference-manifest.js": {
+      "bytes": 10848,
+      "imports": [],
+      "format": "cjs"
+    },
     ".open-next/server-functions/default/.next/server/app/staff/orders/page_client-reference-manifest.js": {
       "bytes": 10816,
       "imports": [],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/app/staff/kitchen/page_client-reference-manifest.js": {
-      "bytes": 10848,
+    ".open-next/server-functions/default/.next/server/app/_not-found/page_client-reference-manifest.js": {
+      "bytes": 8459,
       "imports": [],
       "format": "cjs"
     },
@@ -3623,19 +3623,14 @@
           "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/reservation/page_client-reference-manifest.js"
         },
         {
-          "path": ".open-next/server-functions/default/.next/server/app/order/page_client-reference-manifest.js",
-          "kind": "require-call",
-          "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/order/page_client-reference-manifest.js"
-        },
-        {
           "path": ".open-next/server-functions/default/.next/server/app/menu/page_client-reference-manifest.js",
           "kind": "require-call",
           "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/menu/page_client-reference-manifest.js"
         },
         {
-          "path": ".open-next/server-functions/default/.next/server/app/contact/page_client-reference-manifest.js",
+          "path": ".open-next/server-functions/default/.next/server/app/order/page_client-reference-manifest.js",
           "kind": "require-call",
-          "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/contact/page_client-reference-manifest.js"
+          "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/order/page_client-reference-manifest.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/about/page_client-reference-manifest.js",
@@ -3643,9 +3638,9 @@
           "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/about/page_client-reference-manifest.js"
         },
         {
-          "path": ".open-next/server-functions/default/.next/server/app/_not-found/page_client-reference-manifest.js",
+          "path": ".open-next/server-functions/default/.next/server/app/contact/page_client-reference-manifest.js",
           "kind": "require-call",
-          "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/_not-found/page_client-reference-manifest.js"
+          "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/contact/page_client-reference-manifest.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/_global-error/page_client-reference-manifest.js",
@@ -3658,14 +3653,19 @@
           "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/staff/pos/page_client-reference-manifest.js"
         },
         {
+          "path": ".open-next/server-functions/default/.next/server/app/staff/kitchen/page_client-reference-manifest.js",
+          "kind": "require-call",
+          "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/staff/kitchen/page_client-reference-manifest.js"
+        },
+        {
           "path": ".open-next/server-functions/default/.next/server/app/staff/orders/page_client-reference-manifest.js",
           "kind": "require-call",
           "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/staff/orders/page_client-reference-manifest.js"
         },
         {
-          "path": ".open-next/server-functions/default/.next/server/app/staff/kitchen/page_client-reference-manifest.js",
+          "path": ".open-next/server-functions/default/.next/server/app/_not-found/page_client-reference-manifest.js",
           "kind": "require-call",
-          "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/staff/kitchen/page_client-reference-manifest.js"
+          "original": "/Users/aamirakwarali/Desktop/kCB/.open-next/server-functions/default/.next/server/app/_not-found/page_client-reference-manifest.js"
         }
       ],
       "format": "cjs"
@@ -4230,7 +4230,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/chunks/ssr/src_ab2d0885._.js": {
-      "bytes": 5063,
+      "bytes": 5242,
       "imports": [],
       "format": "cjs"
     },
@@ -9572,32 +9572,32 @@
         ".open-next/server-functions/default/.next/server/app/reservation/page_client-reference-manifest.js": {
           "bytesInOutput": 9085
         },
-        ".open-next/server-functions/default/.next/server/app/order/page_client-reference-manifest.js": {
-          "bytesInOutput": 9126
-        },
         ".open-next/server-functions/default/.next/server/app/menu/page_client-reference-manifest.js": {
           "bytesInOutput": 9099
         },
-        ".open-next/server-functions/default/.next/server/app/contact/page_client-reference-manifest.js": {
-          "bytesInOutput": 9061
+        ".open-next/server-functions/default/.next/server/app/order/page_client-reference-manifest.js": {
+          "bytesInOutput": 9126
         },
         ".open-next/server-functions/default/.next/server/app/about/page_client-reference-manifest.js": {
           "bytesInOutput": 9048
         },
-        ".open-next/server-functions/default/.next/server/app/_not-found/page_client-reference-manifest.js": {
-          "bytesInOutput": 8071
+        ".open-next/server-functions/default/.next/server/app/contact/page_client-reference-manifest.js": {
+          "bytesInOutput": 9061
         },
         ".open-next/server-functions/default/.next/server/app/_global-error/page_client-reference-manifest.js": {
           "bytesInOutput": 5722
         },
         ".open-next/server-functions/default/.next/server/app/staff/pos/page_client-reference-manifest.js": {
-          "bytesInOutput": 10299
+          "bytesInOutput": 10298
+        },
+        ".open-next/server-functions/default/.next/server/app/staff/kitchen/page_client-reference-manifest.js": {
+          "bytesInOutput": 10354
         },
         ".open-next/server-functions/default/.next/server/app/staff/orders/page_client-reference-manifest.js": {
           "bytesInOutput": 10321
         },
-        ".open-next/server-functions/default/.next/server/app/staff/kitchen/page_client-reference-manifest.js": {
-          "bytesInOutput": 10354
+        ".open-next/server-functions/default/.next/server/app/_not-found/page_client-reference-manifest.js": {
+          "bytesInOutput": 8072
         },
         ".open-next/server-functions/default/node_modules/next/dist/server/load-manifest.external.js": {
           "bytesInOutput": 20237
@@ -9705,7 +9705,7 @@
           "bytesInOutput": 17805
         },
         ".open-next/server-functions/default/.next/server/chunks/ssr/src_ab2d0885._.js": {
-          "bytesInOutput": 5170
+          "bytesInOutput": 5349
         },
         ".open-next/server-functions/default/.next/server/chunks/ssr/src_app_5b2047f8._.js": {
           "bytesInOutput": 330
@@ -10245,7 +10245,7 @@
           "bytesInOutput": 61419
         }
       },
-      "bytes": 3669020
+      "bytes": 3669199
     }
   }
 }

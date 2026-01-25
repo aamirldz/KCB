@@ -2,7 +2,6 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { StaffOrder, OrderItem, OrderStatus, StaffMember, OrderType } from '@/types/order';
-import { MenuItem } from '@/types/menu';
 import { generateId } from '@/lib/utils';
 
 interface OrderContextType {
