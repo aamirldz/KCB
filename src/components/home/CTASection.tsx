@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function CTASection() {
     return (
-        <section className="mt-24 py-10 bg-gradient-to-r from-black via-crimson-dark to-black border-y border-crimson/30">
+        <section className="py-16 bg-gradient-to-r from-black via-crimson-dark to-black border-y border-crimson/30">
             <div className="container">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                     {/* Left - Text */}
