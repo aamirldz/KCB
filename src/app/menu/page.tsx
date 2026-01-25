@@ -24,9 +24,9 @@ export default function MenuPage() {
     }, [activeCategory, searchQuery, vegOnly]);
 
     return (
-        <div className="min-h-screen bg-black pt-20">
+        <div className="min-h-screen bg-black pt-28">
             {/* Header with gradient background */}
-            <section className="relative py-16 overflow-hidden">
+            <section className="relative py-12 overflow-hidden">
                 {/* Background decorations */}
                 <div className="absolute inset-0 bg-gradient-to-b from-crimson/10 via-transparent to-transparent" />
                 <div className="absolute top-0 left-1/4 w-80 h-80 bg-crimson/10 rounded-full blur-[120px]" />
