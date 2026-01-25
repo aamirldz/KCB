@@ -104,7 +104,7 @@ export default function POSPage() {
     return (
         <>
             {/* Spacer for fixed staff navbar */}
-            <div className="h-24" />
+            <div className="h-14" />
             <div className="min-h-[calc(100vh-5rem)] flex">
                 {/* Left: Menu */}
                 <div className="flex-1 flex flex-col min-w-0">
@@ -122,17 +122,18 @@ export default function POSPage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         </div>
-                        <div className="flex gap-1 overflow-x-auto flex-1 scrollbar-hide">
+                        <div className="flex gap-2 overflow-x-auto flex-1 scrollbar-hide py-1">
                             {allCategories.map((cat) => (
                                 <button
                                     key={cat.id}
                                     onClick={() => setActiveCategory(cat.id)}
-                                    className={`px-3 py-1.5 text-xs font-medium whitespace-nowrap transition-all ${activeCategory === cat.id
-                                        ? 'bg-crimson text-white'
-                                        : 'bg-charcoal text-gray hover:text-white'
+                                    className={`px-4 py-2.5 text-sm font-semibold whitespace-nowrap transition-all border-2 rounded-md flex items-center gap-2 ${activeCategory === cat.id
+                                        ? 'bg-crimson text-white border-crimson shadow-lg shadow-crimson/30'
+                                        : 'bg-charcoal text-gray border-dark-gray hover:text-white hover:border-gray'
                                         }`}
                                 >
-                                    {cat.icon} {cat.name}
+                                    <span className="text-lg">{cat.icon}</span>
+                                    <span>{cat.name}</span>
                                 </button>
                             ))}
                         </div>
