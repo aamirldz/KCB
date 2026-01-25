@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Hero() {
     return (
-        <section className="min-h-screen flex flex-col bg-black relative overflow-hidden">
+        <section className="flex flex-col bg-black relative overflow-hidden">
             {/* Background Gradient */}
             <div className="absolute inset-0">
                 <div className="absolute inset-0 bg-gradient-to-br from-crimson/10 via-transparent to-gold/5" />
@@ -14,7 +14,7 @@ export default function Hero() {
             </div>
 
             {/* Main Content */}
-            <div className="flex-1 flex items-center relative z-10 pt-20 pb-8">
+            <div className="flex items-center relative z-10 pt-24 pb-10">
                 <div className="container">
                     <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                         {/* Left - Text Content */}

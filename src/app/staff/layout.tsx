@@ -118,7 +118,7 @@ export default function StaffLayout({ children }: { children: React.ReactNode })
         <OrderProvider>
             <div className="min-h-screen bg-gradient-to-br from-black via-charcoal to-black">
                 <StaffNavigation />
-                <main className={isLoginPage ? '' : 'pt-20'}>
+                <main className={isLoginPage ? '' : 'pt-14'}>
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={pathname}

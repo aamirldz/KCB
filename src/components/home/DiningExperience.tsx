@@ -12,7 +12,7 @@ const features = [
 
 export default function DiningExperience() {
     return (
-        <section className="py-20 bg-charcoal relative z-10 overflow-hidden">
+        <section className="pt-16 pb-20 bg-charcoal relative z-10 overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-0 left-1/2 w-[500px] h-[500px] bg-crimson/5 rounded-full blur-[150px] -translate-x-1/2" />
 

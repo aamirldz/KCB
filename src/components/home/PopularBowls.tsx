@@ -31,7 +31,7 @@ export default function PopularBowls() {
     };
 
     return (
-        <section className="py-24 bg-black relative overflow-hidden">
+        <section className="pt-16 pb-20 bg-black relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[200px] -translate-y-1/2" />
 
