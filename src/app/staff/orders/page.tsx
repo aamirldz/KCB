@@ -48,7 +48,7 @@ export default function OrdersPage() {
     if (!currentStaff) return null;
 
     return (
-        <div className="h-[calc(100vh-64px)] flex flex-col">
+        <div className="h-[calc(100vh-80px)] flex flex-col">
             {/* Stats */}
             <div className="p-3 bg-black/30 border-b border-dark-gray">
                 <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
