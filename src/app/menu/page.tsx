@@ -24,9 +24,9 @@ export default function MenuPage() {
     }, [activeCategory, searchQuery, vegOnly]);
 
     return (
-        <div className="min-h-screen bg-black pt-32">
+        <div className="min-h-screen bg-black pt-24">
             {/* Header with gradient background */}
-            <section className="relative py-12 overflow-hidden">
+            <section className="relative py-8 overflow-hidden">
                 {/* Background decorations */}
                 <div className="absolute inset-0 bg-gradient-to-b from-crimson/10 via-transparent to-transparent" />
                 <div className="absolute top-0 left-1/4 w-80 h-80 bg-crimson/10 rounded-full blur-[120px]" />
@@ -34,7 +34,7 @@ export default function MenuPage() {
 
                 <div className="container relative z-10">
                     {/* Title */}
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-10 mt-4">
                         <div className="inline-flex items-center gap-2 mb-4">
                             <div className="h-px w-8 bg-gold/50" />
                             <span className="chinese text-gold text-xl">菜单</span>

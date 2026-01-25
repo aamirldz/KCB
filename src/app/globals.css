@@ -94,6 +94,11 @@ body {
   min-height: 100vh;
 }
 
+/* Main content offset for fixed header */
+.main-content {
+  padding-top: 80px;
+}
+
 /* Typography */
 h1,
 h2,

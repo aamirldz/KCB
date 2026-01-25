@@ -51,7 +51,7 @@ export default function StaffLoginPage() {
     const handleBackspace = () => { setPin((prev) => prev.slice(0, -1)); setError(''); };
 
     return (
-        <div className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+        <div className="min-h-screen pt-24 flex items-center justify-center p-6 relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-20 left-20 w-72 h-72 bg-crimson/10 rounded-full blur-[100px]" />
@@ -149,7 +149,7 @@ export default function StaffLoginPage() {
                                         key={i}
                                         animate={pin.length > i ? { scale: [1, 1.2, 1] } : {}}
                                         className={`w-12 h-12 border-2 flex items-center justify-center transition-all ${error ? 'border-crimson bg-crimson/10' :
-                                                pin.length > i ? 'border-gold bg-gold/10' : 'border-gray/30'
+                                            pin.length > i ? 'border-gold bg-gold/10' : 'border-gray/30'
                                             }`}
                                     >
                                         {pin.length > i && (
@@ -199,8 +199,8 @@ export default function StaffLoginPage() {
                                         }}
                                         disabled={isLoading}
                                         className={`h-12 text-lg font-bold transition-all disabled:opacity-50 ${key === 'C' ? 'bg-crimson/20 text-crimson hover:bg-crimson hover:text-white' :
-                                                key === '⌫' ? 'bg-dark-gray text-gray hover:text-white' :
-                                                    'bg-dark-gray text-white hover:bg-gray/50'
+                                            key === '⌫' ? 'bg-dark-gray text-gray hover:text-white' :
+                                                'bg-dark-gray text-white hover:bg-gray/50'
                                             }`}
                                     >
                                         {key}
