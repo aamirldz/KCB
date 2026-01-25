@@ -104,7 +104,7 @@ export default function POSPage() {
     return (
         <>
             {/* Spacer for fixed staff navbar */}
-            <div className="h-16" />
+            <div className="h-24" />
             <div className="min-h-[calc(100vh-5rem)] flex">
                 {/* Left: Menu */}
                 <div className="flex-1 flex flex-col min-w-0">

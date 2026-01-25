@@ -128,7 +128,7 @@ export default function KitchenPage() {
     return (
         <>
             {/* Spacer for fixed staff navbar */}
-            <div className="h-16" />
+            <div className="h-24" />
             <div className="min-h-[calc(100vh-5rem)] flex flex-col">
                 {/* Stats Bar */}
                 <div className="p-3 bg-black/30 border-b border-dark-gray flex items-center justify-between">
