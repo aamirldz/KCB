@@ -20,7 +20,7 @@ export default function SignatureDishes() {
     };
 
     return (
-        <section className="pt-16 pb-20 bg-charcoal relative overflow-hidden">
+        <section className="pt-20 pb-24 bg-charcoal relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-crimson/5 rounded-full blur-[150px]" />
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-gold/5 rounded-full blur-[120px]" />
