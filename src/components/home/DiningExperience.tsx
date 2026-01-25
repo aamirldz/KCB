@@ -12,18 +12,18 @@ const features = [
 
 export default function DiningExperience() {
     return (
-        <section className="py-20 bg-charcoal overflow-hidden">
+        <section className="py-20 pb-28 bg-charcoal relative z-10">
             <div className="container">
                 <div className="grid lg:grid-cols-5 gap-10 items-center">
                     {/* Left - Image/Visual (2 cols) */}
                     <div className="lg:col-span-2">
-                        <div className="relative bg-gradient-to-br from-crimson/20 via-dark-gray to-charcoal border border-crimson/20 aspect-square flex items-center justify-center mb-6">
+                        <div className="relative bg-gradient-to-br from-crimson/20 via-dark-gray to-charcoal border border-crimson/20 aspect-square flex items-center justify-center">
                             <span className="text-[100px]">🏮</span>
                             <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold" />
                             <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold" />
                         </div>
-                        {/* Years badge - now below the image */}
-                        <div className="flex items-center gap-3 bg-crimson p-4">
+                        {/* Years badge - below the image with margin */}
+                        <div className="flex items-center gap-3 bg-crimson p-4 mt-4">
                             <span className="text-white font-bold text-3xl">5+</span>
                             <div>
                                 <span className="text-white font-semibold block">Years</span>

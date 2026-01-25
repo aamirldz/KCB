@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function CTASection() {
     return (
-        <section className="py-16 bg-gradient-to-r from-crimson to-crimson-light relative overflow-hidden">
+        <section className="py-16 bg-gradient-to-r from-crimson to-crimson-light relative z-0">
             {/* Pattern */}
             <div className="absolute inset-0 opacity-10" style={{
                 backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
