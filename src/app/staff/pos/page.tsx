@@ -102,7 +102,7 @@ export default function POSPage() {
     if (!currentStaff) return null;
 
     return (
-        <div className="h-[calc(100vh-56px)] flex">
+        <div className="h-[calc(100vh-64px)] flex">
             {/* Left: Menu */}
             <div className="flex-1 flex flex-col min-w-0">
                 {/* Categories */}

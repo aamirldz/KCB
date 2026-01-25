@@ -56,8 +56,8 @@ function StaffNavigation() {
                             key={link.href}
                             href={link.href}
                             className={`relative flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all rounded-sm ${pathname === link.href
-                                    ? 'bg-crimson text-white shadow-[0_0_15px_rgba(185,28,28,0.4)]'
-                                    : 'text-gray hover:text-white hover:bg-white/5'
+                                ? 'bg-crimson text-white shadow-[0_0_15px_rgba(185,28,28,0.4)]'
+                                : 'text-gray hover:text-white hover:bg-white/5'
                                 }`}
                         >
                             <span className="text-base">{link.icon}</span>
@@ -118,7 +118,7 @@ export default function StaffLayout({ children }: { children: React.ReactNode })
         <OrderProvider>
             <div className="min-h-screen bg-gradient-to-br from-black via-charcoal to-black">
                 <StaffNavigation />
-                <main className={isLoginPage ? '' : 'pt-14'}>
+                <main className={isLoginPage ? '' : 'pt-16'}>
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={pathname}

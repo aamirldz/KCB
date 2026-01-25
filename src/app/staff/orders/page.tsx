@@ -48,7 +48,7 @@ export default function OrdersPage() {
     if (!currentStaff) return null;
 
     return (
-        <div className="h-[calc(100vh-56px)] flex flex-col">
+        <div className="h-[calc(100vh-64px)] flex flex-col">
             {/* Stats */}
             <div className="p-3 bg-black/30 border-b border-dark-gray">
                 <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
@@ -148,10 +148,10 @@ export default function OrdersPage() {
                                 <td className="p-3 text-gold font-semibold text-sm">{formatPrice(order.total)}</td>
                                 <td className="p-3">
                                     <span className={`text-xs px-2 py-1 font-semibold ${order.status === 'new' ? 'bg-blue-500/20 text-blue-400' :
-                                            order.status === 'preparing' ? 'bg-gold/20 text-gold' :
-                                                order.status === 'ready' ? 'bg-green-500/20 text-green-400' :
-                                                    order.status === 'completed' ? 'bg-gray/20 text-gray' :
-                                                        'bg-crimson/20 text-crimson'
+                                        order.status === 'preparing' ? 'bg-gold/20 text-gold' :
+                                            order.status === 'ready' ? 'bg-green-500/20 text-green-400' :
+                                                order.status === 'completed' ? 'bg-gray/20 text-gray' :
+                                                    'bg-crimson/20 text-crimson'
                                         }`}>
                                         {order.status.toUpperCase()}
                                     </span>
@@ -207,9 +207,9 @@ export default function OrdersPage() {
                                     <p className="text-gray text-xs">{formatTime(selectedOrderData.createdAt)} • {formatDate(selectedOrderData.createdAt)}</p>
                                 </div>
                                 <span className={`text-xs px-2 py-1 font-semibold ${selectedOrderData.status === 'new' ? 'bg-blue-500/20 text-blue-400' :
-                                        selectedOrderData.status === 'preparing' ? 'bg-gold/20 text-gold' :
-                                            selectedOrderData.status === 'ready' ? 'bg-green-500/20 text-green-400' :
-                                                'bg-gray/20 text-gray'
+                                    selectedOrderData.status === 'preparing' ? 'bg-gold/20 text-gold' :
+                                        selectedOrderData.status === 'ready' ? 'bg-green-500/20 text-green-400' :
+                                            'bg-gray/20 text-gray'
                                     }`}>
                                     {selectedOrderData.status.toUpperCase()}
                                 </span>
