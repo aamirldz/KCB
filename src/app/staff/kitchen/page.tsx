@@ -126,100 +126,104 @@ export default function KitchenPage() {
     if (!currentStaff) return null;
 
     return (
-        <div className="min-h-[calc(100vh-5rem)] flex flex-col">
-            {/* Stats Bar */}
-            <div className="p-3 bg-black/30 border-b border-dark-gray flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse" />
-                        <span className="text-white text-sm"><span className="font-bold">{newOrders.length}</span> New</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-gold" />
-                        <span className="text-white text-sm"><span className="font-bold">{preparingOrders.length}</span> Preparing</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-green-500" />
-                        <span className="text-white text-sm"><span className="font-bold">{readyOrders.length}</span> Ready</span>
-                    </div>
-                </div>
-                <div className="flex items-center gap-4">
-                    <span className="text-gray text-sm">✓ {completedToday} done today</span>
-                    <div className="flex bg-charcoal">
-                        <button
-                            onClick={() => setActiveTab('active')}
-                            className={`px-4 py-2 text-sm font-semibold transition-all ${activeTab === 'active' ? 'bg-crimson text-white' : 'text-gray'}`}
-                        >
-                            Active ({activeOrders.length})
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('ready')}
-                            className={`px-4 py-2 text-sm font-semibold transition-all relative ${activeTab === 'ready' ? 'bg-green-500 text-white' : 'text-gray'}`}
-                        >
-                            Ready ({readyOrders.length})
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            {/* New Order Alert */}
-            <AnimatePresence>
-                {newOrderAlert && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0 }}
-                        className="mx-3 mt-3 p-3 bg-blue-500/20 border border-blue-500/30 flex items-center justify-between"
-                    >
+        <>
+            {/* Spacer for fixed staff navbar */}
+            <div className="h-16" />
+            <div className="min-h-[calc(100vh-5rem)] flex flex-col">
+                {/* Stats Bar */}
+                <div className="p-3 bg-black/30 border-b border-dark-gray flex items-center justify-between">
+                    <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2">
-                            <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 0.5, repeat: Infinity }}>🔔</motion.span>
-                            <span className="text-blue-400 font-semibold text-sm">New order received!</span>
+                            <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse" />
+                            <span className="text-white text-sm"><span className="font-bold">{newOrders.length}</span> New</span>
                         </div>
-                        <button onClick={clearNewOrderAlert} className="text-blue-400 text-xs hover:text-white">Dismiss</button>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-gold" />
+                            <span className="text-white text-sm"><span className="font-bold">{preparingOrders.length}</span> Preparing</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-green-500" />
+                            <span className="text-white text-sm"><span className="font-bold">{readyOrders.length}</span> Ready</span>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <span className="text-gray text-sm">✓ {completedToday} done today</span>
+                        <div className="flex bg-charcoal">
+                            <button
+                                onClick={() => setActiveTab('active')}
+                                className={`px-4 py-2 text-sm font-semibold transition-all ${activeTab === 'active' ? 'bg-crimson text-white' : 'text-gray'}`}
+                            >
+                                Active ({activeOrders.length})
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('ready')}
+                                className={`px-4 py-2 text-sm font-semibold transition-all relative ${activeTab === 'ready' ? 'bg-green-500 text-white' : 'text-gray'}`}
+                            >
+                                Ready ({readyOrders.length})
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-            {/* Orders Grid */}
-            <div className="flex-1 overflow-y-auto p-3">
-                {activeTab === 'active' ? (
-                    <>
-                        {activeOrders.length > 0 ? (
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-                                <AnimatePresence>
-                                    {activeOrders.map((order) => (
-                                        <OrderCard key={order.id} order={order} onUpdateStatus={updateOrderStatus} />
-                                    ))}
-                                </AnimatePresence>
+                {/* New Order Alert */}
+                <AnimatePresence>
+                    {newOrderAlert && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0 }}
+                            className="mx-3 mt-3 p-3 bg-blue-500/20 border border-blue-500/30 flex items-center justify-between"
+                        >
+                            <div className="flex items-center gap-2">
+                                <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 0.5, repeat: Infinity }}>🔔</motion.span>
+                                <span className="text-blue-400 font-semibold text-sm">New order received!</span>
                             </div>
-                        ) : (
-                            <div className="flex flex-col items-center justify-center h-full">
-                                <motion.span animate={{ y: [0, -5, 0] }} transition={{ duration: 2, repeat: Infinity }} className="text-6xl mb-4">👨‍🍳</motion.span>
-                                <h3 className="text-white text-xl font-semibold mb-1">All caught up!</h3>
-                                <p className="text-gray text-sm">No orders in queue</p>
-                            </div>
-                        )}
-                    </>
-                ) : (
-                    <>
-                        {readyOrders.length > 0 ? (
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-                                <AnimatePresence>
-                                    {readyOrders.map((order) => (
-                                        <OrderCard key={order.id} order={order} onUpdateStatus={updateOrderStatus} />
-                                    ))}
-                                </AnimatePresence>
-                            </div>
-                        ) : (
-                            <div className="flex flex-col items-center justify-center h-full">
-                                <span className="text-6xl mb-4">✨</span>
-                                <h3 className="text-white text-xl font-semibold mb-1">No ready orders</h3>
-                                <p className="text-gray text-sm">Orders will appear once prepared</p>
-                            </div>
-                        )}
-                    </>
-                )}
+                            <button onClick={clearNewOrderAlert} className="text-blue-400 text-xs hover:text-white">Dismiss</button>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* Orders Grid */}
+                <div className="flex-1 overflow-y-auto p-3">
+                    {activeTab === 'active' ? (
+                        <>
+                            {activeOrders.length > 0 ? (
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                                    <AnimatePresence>
+                                        {activeOrders.map((order) => (
+                                            <OrderCard key={order.id} order={order} onUpdateStatus={updateOrderStatus} />
+                                        ))}
+                                    </AnimatePresence>
+                                </div>
+                            ) : (
+                                <div className="flex flex-col items-center justify-center h-full">
+                                    <motion.span animate={{ y: [0, -5, 0] }} transition={{ duration: 2, repeat: Infinity }} className="text-6xl mb-4">👨‍🍳</motion.span>
+                                    <h3 className="text-white text-xl font-semibold mb-1">All caught up!</h3>
+                                    <p className="text-gray text-sm">No orders in queue</p>
+                                </div>
+                            )}
+                        </>
+                    ) : (
+                        <>
+                            {readyOrders.length > 0 ? (
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                                    <AnimatePresence>
+                                        {readyOrders.map((order) => (
+                                            <OrderCard key={order.id} order={order} onUpdateStatus={updateOrderStatus} />
+                                        ))}
+                                    </AnimatePresence>
+                                </div>
+                            ) : (
+                                <div className="flex flex-col items-center justify-center h-full">
+                                    <span className="text-6xl mb-4">✨</span>
+                                    <h3 className="text-white text-xl font-semibold mb-1">No ready orders</h3>
+                                    <p className="text-gray text-sm">Orders will appear once prepared</p>
+                                </div>
+                            )}
+                        </>
+                    )}
+                </div>
             </div>
-        </div>
+        </>
     );
 }
