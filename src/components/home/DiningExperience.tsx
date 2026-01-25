@@ -44,8 +44,8 @@ export default function DiningExperience() {
                                 <span className="text-[100px] relative z-10 drop-shadow-[0_0_25px_rgba(185,28,28,0.5)]">🏮</span>
                             </div>
 
-                            {/* 5+ Years Badge with Glow */}
-                            <div className="absolute -bottom-3 -right-3 bg-gradient-to-br from-crimson to-crimson-dark px-4 py-2.5 shadow-[0_0_20px_rgba(185,28,28,0.5)] border border-crimson-light/30">
+                            {/* 5+ Years Badge with Glow - Inside bottom right */}
+                            <div className="absolute bottom-4 right-4 bg-gradient-to-br from-crimson to-crimson-dark px-4 py-2.5 shadow-[0_0_20px_rgba(185,28,28,0.5)] border border-crimson-light/30">
                                 <span className="text-white font-bold text-xl block leading-none">5+</span>
                                 <span className="text-white/70 text-[9px] uppercase tracking-wide">Years</span>
                             </div>

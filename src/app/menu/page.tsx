@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
 import { menuItems } from '@/data/menu';
 import { MenuItem } from '@/types/menu';
 import { MenuCard, MenuFilter, MenuItemModal } from '@/components/menu';
@@ -26,61 +25,69 @@ export default function MenuPage() {
 
     return (
         <div className="min-h-screen bg-black pt-20">
-            {/* Header */}
-            <section className="section pb-8">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-12"
-                    >
-                        <span className="chinese text-gold text-2xl block mb-3">菜单</span>
-                        <h1 className="text-white mb-4">Our Menu</h1>
-                        <p className="text-light-gray max-w-xl mx-auto text-lg">
+            {/* Header with gradient background */}
+            <section className="relative py-16 overflow-hidden">
+                {/* Background decorations */}
+                <div className="absolute inset-0 bg-gradient-to-b from-crimson/10 via-transparent to-transparent" />
+                <div className="absolute top-0 left-1/4 w-80 h-80 bg-crimson/10 rounded-full blur-[120px]" />
+                <div className="absolute top-0 right-1/4 w-64 h-64 bg-gold/5 rounded-full blur-[100px]" />
+
+                <div className="container relative z-10">
+                    {/* Title */}
+                    <div className="text-center mb-12">
+                        <div className="inline-flex items-center gap-2 mb-4">
+                            <div className="h-px w-8 bg-gold/50" />
+                            <span className="chinese text-gold text-xl">菜单</span>
+                            <div className="h-px w-8 bg-gold/50" />
+                        </div>
+                        <h1 className="text-white text-4xl md:text-5xl font-display mb-4">Our Menu</h1>
+                        <p className="text-light-gray max-w-xl mx-auto">
                             Explore our curated selection of authentic Asian dishes
                         </p>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                    >
-                        <MenuFilter
-                            activeCategory={activeCategory}
-                            onCategoryChange={setActiveCategory}
-                            searchQuery={searchQuery}
-                            onSearchChange={setSearchQuery}
-                            vegOnly={vegOnly}
-                            onVegOnlyChange={setVegOnly}
-                        />
-                    </motion.div>
+                    {/* Filter Component */}
+                    <MenuFilter
+                        activeCategory={activeCategory}
+                        onCategoryChange={setActiveCategory}
+                        searchQuery={searchQuery}
+                        onSearchChange={setSearchQuery}
+                        vegOnly={vegOnly}
+                        onVegOnlyChange={setVegOnly}
+                    />
                 </div>
             </section>
 
             {/* Menu Grid */}
-            <section className="section pt-8 bg-charcoal">
+            <section className="py-12 bg-gradient-to-b from-black to-charcoal">
                 <div className="container">
+                    {/* Results count */}
+                    <div className="flex items-center justify-between mb-8">
+                        <p className="text-gray text-sm">
+                            Showing <span className="text-gold font-semibold">{filteredItems.length}</span> {filteredItems.length === 1 ? 'dish' : 'dishes'}
+                        </p>
+                        {(searchQuery || vegOnly || activeCategory !== 'all') && (
+                            <button
+                                onClick={() => {
+                                    setActiveCategory('all');
+                                    setSearchQuery('');
+                                    setVegOnly(false);
+                                }}
+                                className="text-crimson text-sm hover:text-crimson-light transition-colors"
+                            >
+                                Clear filters
+                            </button>
+                        )}
+                    </div>
+
                     {filteredItems.length > 0 ? (
-                        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                            {filteredItems.map((item, index) => (
-                                <motion.div
-                                    key={item.id}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.3, delay: index * 0.03 }}
-                                >
-                                    <MenuCard item={item} onViewDetails={() => setSelectedItem(item)} />
-                                </motion.div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                            {filteredItems.map((item) => (
+                                <MenuCard key={item.id} item={item} onViewDetails={() => setSelectedItem(item)} />
                             ))}
-                        </motion.div>
+                        </div>
                     ) : (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="text-center py-20"
-                        >
+                        <div className="text-center py-20">
                             <span className="text-6xl mb-6 block">🍜</span>
                             <h3 className="text-white text-2xl mb-3">No dishes found</h3>
                             <p className="text-gray mb-6">Try adjusting your filters</p>
@@ -90,11 +97,11 @@ export default function MenuPage() {
                                     setSearchQuery('');
                                     setVegOnly(false);
                                 }}
-                                className="text-crimson hover:text-crimson-light transition-colors font-medium"
+                                className="px-6 py-2 bg-crimson text-white text-sm font-semibold uppercase tracking-wider hover:bg-crimson-light transition-all"
                             >
                                 Clear all filters
                             </button>
-                        </motion.div>
+                        </div>
                     )}
                 </div>
             </section>

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { MenuItem } from '@/types/menu';
 import { formatPrice, getSpiceLevelEmoji } from '@/lib/utils';
 import { useCart } from '@/context/CartContext';
@@ -34,35 +33,40 @@ export default function MenuCard({ item, onViewDetails }: MenuCardProps) {
     };
 
     return (
-        <motion.div
-            layout
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.3 }}
-            className="bg-charcoal border border-dark-gray overflow-hidden group hover:border-crimson/50 transition-all duration-300"
-        >
+        <div className="bg-gradient-to-br from-charcoal to-dark-gray border border-gray/15 overflow-hidden group hover:border-crimson/50 hover:shadow-[0_0_25px_rgba(185,28,28,0.15)] transition-all duration-300">
             {/* Image */}
-            <div className="relative h-48 bg-gradient-to-br from-crimson/20 via-dark-gray to-charcoal flex items-center justify-center overflow-hidden">
-                <span className="text-7xl transition-transform duration-500 group-hover:scale-110">
+            <div className="relative h-44 bg-gradient-to-br from-crimson/15 via-dark-gray to-charcoal flex items-center justify-center overflow-hidden">
+                {/* Hover glow */}
+                <div className="absolute inset-0 bg-crimson/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                <span className="text-6xl transition-transform duration-500 group-hover:scale-110">
                     {getCategoryEmoji(item.category)}
                 </span>
 
-                {/* Badges */}
-                <div className="absolute top-3 left-3 flex items-center gap-2">
-                    <div className={item.isVeg ? 'badge-veg' : 'badge-nonveg'} />
+                {/* Veg/Non-veg Badge */}
+                <div className="absolute top-3 left-3">
+                    <div className={`w-5 h-5 border-2 ${item.isVeg ? 'border-green-500' : 'border-crimson'} flex items-center justify-center bg-black/50`}>
+                        <div className={`w-2.5 h-2.5 ${item.isVeg ? 'bg-green-500' : 'bg-crimson'} rounded-full`} />
+                    </div>
                 </div>
 
+                {/* Tags */}
                 {item.tags.length > 0 && (
                     <div className="absolute top-3 right-3 flex flex-col gap-1">
                         {item.tags.includes('popular') && (
-                            <span className="badge badge-popular">Popular</span>
+                            <span className="px-2 py-1 bg-gradient-to-r from-gold to-gold-light text-black text-[10px] font-bold uppercase tracking-wider shadow-lg">
+                                🔥 Popular
+                            </span>
                         )}
                         {item.tags.includes('chef-special') && (
-                            <span className="badge badge-special">Chef&apos;s Pick</span>
+                            <span className="px-2 py-1 bg-crimson text-white text-[10px] font-bold uppercase tracking-wider shadow-lg">
+                                Chef&apos;s Pick
+                            </span>
                         )}
                         {item.tags.includes('new') && (
-                            <span className="badge badge-new">New</span>
+                            <span className="px-2 py-1 bg-green-600 text-white text-[10px] font-bold uppercase tracking-wider shadow-lg">
+                                New
+                            </span>
                         )}
                     </div>
                 )}
@@ -71,22 +75,22 @@ export default function MenuCard({ item, onViewDetails }: MenuCardProps) {
             {/* Content */}
             <div className="p-5">
                 <div className="flex items-start justify-between gap-2 mb-2">
-                    <h4 className="text-white font-display text-lg group-hover:text-gold transition-colors line-clamp-1">
+                    <h4 className="text-white font-semibold text-base group-hover:text-gold transition-colors line-clamp-1">
                         {item.name}
                     </h4>
                     {item.spiceLevel > 0 && (
-                        <span className="flex-shrink-0" title={`Spice Level: ${item.spiceLevel}`}>
+                        <span className="flex-shrink-0 text-sm" title={`Spice Level: ${item.spiceLevel}`}>
                             {getSpiceLevelEmoji(item.spiceLevel)}
                         </span>
                     )}
                 </div>
 
-                <p className="text-gray text-sm mb-4 line-clamp-2">
+                <p className="text-gray text-sm mb-4 line-clamp-2 leading-relaxed">
                     {item.description}
                 </p>
 
                 {/* Price & Actions */}
-                <div className="flex items-center justify-between pt-4 border-t border-dark-gray">
+                <div className="flex items-center justify-between pt-4 border-t border-gray/10">
                     <span className="text-gold font-display text-xl">
                         {formatPrice(item.price)}
                     </span>
@@ -95,29 +99,28 @@ export default function MenuCard({ item, onViewDetails }: MenuCardProps) {
                         {onViewDetails && (
                             <button
                                 onClick={onViewDetails}
-                                className="p-2 text-gray hover:text-gold transition-colors"
+                                className="p-2.5 bg-dark-gray/50 text-gray hover:text-gold hover:bg-dark-gray border border-gray/10 hover:border-gold/30 transition-all"
                                 aria-label="View details"
                             >
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                 </svg>
                             </button>
                         )}
 
-                        <motion.button
-                            whileTap={{ scale: 0.95 }}
+                        <button
                             onClick={handleAddToCart}
-                            className={`px-4 py-2 text-xs font-semibold tracking-wide uppercase transition-all ${isAdding
-                                    ? 'bg-green-600 text-white'
-                                    : 'bg-crimson text-white hover:bg-crimson-light'
+                            className={`px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all ${isAdding
+                                    ? 'bg-green-600 text-white shadow-[0_0_15px_rgba(34,197,94,0.4)]'
+                                    : 'bg-crimson text-white hover:bg-crimson-light hover:shadow-[0_0_15px_rgba(185,28,28,0.4)]'
                                 }`}
                         >
-                            {isAdding ? '✓ Added' : 'Add'}
-                        </motion.button>
+                            {isAdding ? '✓ Added' : 'Add +'}
+                        </button>
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 }
