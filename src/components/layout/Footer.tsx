@@ -22,22 +22,26 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-charcoal border-t border-dark-gray">
+        <footer className="bg-black border-t border-dark-gray relative overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-crimson/5 rounded-full blur-[150px]" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-gold/5 rounded-full blur-[120px]" />
+
             {/* Main Footer */}
-            <div className="container py-12 lg:py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+            <div className="container py-16 lg:py-20 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
 
                     {/* Brand Column */}
                     <div>
-                        <Link href="/" className="flex items-center gap-3 mb-4">
-                            <span className="text-3xl">🍜</span>
+                        <Link href="/" className="flex items-center gap-3 mb-5 group">
+                            <span className="text-4xl group-hover:scale-110 transition-transform">🍜</span>
                             <div>
-                                <span className="chinese text-gold text-base block leading-tight">国王中国碗</span>
-                                <span className="text-white text-xs font-semibold tracking-wider uppercase">King Chinese Bowl</span>
+                                <span className="chinese text-gold text-lg block leading-tight drop-shadow-[0_0_10px_rgba(217,119,6,0.3)]">国王中国碗</span>
+                                <span className="text-white text-sm font-semibold tracking-wider uppercase">King Chinese Bowl</span>
                             </div>
                         </Link>
-                        <p className="text-gray text-sm leading-relaxed mb-5">
-                            Premium Chinese, Korean, Nepalese & Tibetan cuisine in an elegant dining atmosphere.
+                        <p className="text-gray text-sm leading-relaxed mb-6">
+                            Premium Chinese, Korean, Nepalese & Tibetan cuisine crafted with passion and served in an elegant dining atmosphere.
                         </p>
 
                         {/* Social Links */}
@@ -48,10 +52,10 @@ export default function Footer() {
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-9 h-9 bg-dark-gray flex items-center justify-center text-gray hover:text-white hover:bg-crimson transition-all"
+                                    className="w-10 h-10 bg-dark-gray border border-gray/20 flex items-center justify-center text-gray hover:text-white hover:border-gold hover:shadow-[0_0_15px_rgba(217,119,6,0.3)] transition-all"
                                     title={social.name}
                                 >
-                                    <span className="text-sm">{social.icon}</span>
+                                    <span className="text-lg">{social.icon}</span>
                                 </a>
                             ))}
                         </div>
@@ -59,13 +63,16 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Quick Links</h4>
-                        <ul className="space-y-2">
+                        <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-6 flex items-center gap-2">
+                            <span className="h-px w-4 bg-gold" />
+                            Quick Links
+                        </h4>
+                        <ul className="space-y-3">
                             {quickLinks.map((link) => (
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-gray text-sm hover:text-gold transition-colors"
+                                        className="text-gray text-sm hover:text-gold hover:translate-x-1 transition-all inline-block"
                                     >
                                         {link.label}
                                     </Link>
@@ -76,33 +83,45 @@ export default function Footer() {
 
                     {/* Opening Hours */}
                     <div>
-                        <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Opening Hours</h4>
-                        <div className="bg-dark-gray/50 p-4 mb-3">
-                            <div className="flex items-center justify-between mb-1">
-                                <span className="text-gold text-xs font-semibold">ALL DAYS</span>
-                                <span className="text-green-500 text-xs">● Open</span>
+                        <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-6 flex items-center gap-2">
+                            <span className="h-px w-4 bg-gold" />
+                            Opening Hours
+                        </h4>
+                        <div className="bg-dark-gray/50 border border-gray/20 p-5 mb-4">
+                            <div className="flex items-center justify-between mb-2">
+                                <span className="text-gold text-xs font-semibold uppercase tracking-wider">All Days</span>
+                                <span className="text-green-500 text-xs flex items-center gap-1">
+                                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                                    Open
+                                </span>
                             </div>
-                            <span className="text-white font-bold">11:00 AM – 2:00 AM</span>
+                            <span className="text-white font-bold text-xl">11:00 AM – 2:00 AM</span>
                         </div>
                         <p className="text-gray text-xs">
-                            Open 7 days a week including holidays
+                            Open 7 days a week, including all holidays
                         </p>
                     </div>
 
                     {/* Contact Info */}
                     <div>
-                        <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Contact Us</h4>
-                        <ul className="space-y-3 text-sm">
+                        <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-6 flex items-center gap-2">
+                            <span className="h-px w-4 bg-gold" />
+                            Contact Us
+                        </h4>
+                        <ul className="space-y-4 text-sm">
                             <li>
-                                <span className="text-white block">ALC Group, Sector 68</span>
-                                <span className="text-gray">Sahibzada Ajit Singh Nagar, Punjab 160062</span>
+                                <span className="text-gray text-xs uppercase tracking-wider block mb-1">Address</span>
+                                <span className="text-white">ALC Group, Sector 68</span>
+                                <span className="text-gray block">Sahibzada Ajit Singh Nagar, Punjab 160062</span>
                             </li>
                             <li>
-                                <a href="tel:+917508450221" className="text-gold hover:text-gold-light transition-colors font-semibold">
+                                <span className="text-gray text-xs uppercase tracking-wider block mb-1">Phone</span>
+                                <a href="tel:+917508450221" className="text-gold hover:text-gold-light transition-colors font-semibold text-lg">
                                     +91 75084 50221
                                 </a>
                             </li>
                             <li>
+                                <span className="text-gray text-xs uppercase tracking-wider block mb-1">Email</span>
                                 <a href="mailto:hello@kingchinesebowl.com" className="text-gray hover:text-gold transition-colors">
                                     hello@kingchinesebowl.com
                                 </a>
@@ -112,9 +131,10 @@ export default function Footer() {
                                     href="https://maps.google.com/?q=ALC+Group+Sector+68+Mohali"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-gold text-xs hover:text-gold-light transition-colors inline-flex items-center gap-1"
+                                    className="inline-flex items-center gap-2 text-gold text-xs hover:text-gold-light transition-colors group"
                                 >
-                                    🗺️ View on Google Maps →
+                                    🗺️ View on Google Maps
+                                    <span className="group-hover:translate-x-1 transition-transform">→</span>
                                 </a>
                             </li>
                         </ul>
@@ -124,9 +144,9 @@ export default function Footer() {
 
             {/* Bottom Bar */}
             <div className="border-t border-dark-gray">
-                <div className="container py-4 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-gray">
+                <div className="container py-5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray">
                     <span>© {currentYear} <span className="text-gold">King Chinese Bowl</span> • All rights reserved</span>
-                    <div className="flex gap-4">
+                    <div className="flex gap-6">
                         <Link href="#" className="hover:text-gold transition-colors">Privacy Policy</Link>
                         <Link href="#" className="hover:text-gold transition-colors">Terms of Service</Link>
                     </div>
