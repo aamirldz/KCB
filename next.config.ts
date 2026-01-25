@@ -11,12 +11,11 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
+    unoptimized: true, // Required for Cloudflare Workers
   },
 
-  // Experimental features for better performance
-  experimental: {
-    optimizeCss: true,
-  },
+  // Required for Cloudflare Workers deployment
+  output: 'standalone',
 
   // Headers for caching
   async headers() {
