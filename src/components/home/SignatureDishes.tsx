@@ -28,7 +28,7 @@ export default function SignatureDishes() {
             <div className="absolute top-0 right-0 w-96 h-96 bg-crimson/5 rounded-full blur-[150px]" />
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-gold/5 rounded-full blur-[120px]" />
 
-            <div className="container relative z-10">
+            <div className="container relative z-10 pt-8 md:pt-12">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
                     <div>

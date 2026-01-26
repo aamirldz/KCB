@@ -38,7 +38,7 @@ export default function PopularBowls() {
             {/* Background decoration */}
             <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[200px] -translate-y-1/2" />
 
-            <div className="container relative z-10">
+            <div className="container relative z-10 pt-8 md:pt-12">
                 {/* Header */}
                 <div className="flex items-end justify-between gap-6 mb-12">
                     <div>

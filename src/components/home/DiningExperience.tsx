@@ -19,7 +19,7 @@ export default function DiningExperience() {
             {/* Background decoration */}
             <div className="absolute top-0 left-1/2 w-[500px] h-[500px] bg-crimson/5 rounded-full blur-[150px] -translate-x-1/2" />
 
-            <div className="container relative z-10">
+            <div className="container relative z-10 pt-8 md:pt-12">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     {/* Left - Enhanced Visual Card with Glow Effects */}
                     <div className="order-2 lg:order-1">
