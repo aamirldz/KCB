@@ -5,30 +5,70 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* Structural Spacer 1 */}
-      <div className="w-full h-32 md:h-48 bg-black flex items-center justify-center border-t border-b border-white/5">
-        <div className="w-1 h-8 bg-crimson/50" />
+      {/* ========== SECTION SPACER 1 ========== */}
+      <div
+        style={{
+          width: '100%',
+          minHeight: '120px',
+          backgroundColor: '#0A0A0A',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        <div style={{ width: '2px', height: '40px', backgroundColor: 'rgba(185, 28, 28, 0.5)' }} />
       </div>
 
       <SignatureDishes />
 
-      {/* Structural Spacer 2 - Between Signature Dishes & Customer Favorites */}
-      <div className="w-full h-40 md:h-56 lg:h-64 bg-black flex items-center justify-center border-t border-b border-white/5">
-        <div className="w-1 h-12 bg-gold/50" />
+      {/* ========== SECTION SPACER 2 - Between Signature Dishes & Customer Favorites ========== */}
+      <div
+        style={{
+          width: '100%',
+          minHeight: '160px',
+          backgroundColor: '#0A0A0A',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderTop: '1px solid rgba(255,255,255,0.05)',
+          borderBottom: '1px solid rgba(255,255,255,0.05)'
+        }}
+      >
+        <div style={{ width: '2px', height: '50px', backgroundColor: 'rgba(217, 119, 6, 0.5)' }} />
       </div>
 
       <PopularBowls />
 
-      {/* Structural Spacer 3 - Between Customer Favorites & Dining Experience */}
-      <div className="w-full h-40 md:h-56 lg:h-64 bg-black flex items-center justify-center border-t border-b border-white/5">
-        <div className="w-1 h-12 bg-crimson/50" />
+      {/* ========== SECTION SPACER 3 - Between Customer Favorites & Dining Experience ========== */}
+      <div
+        style={{
+          width: '100%',
+          minHeight: '160px',
+          backgroundColor: '#0A0A0A',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderTop: '1px solid rgba(255,255,255,0.05)',
+          borderBottom: '1px solid rgba(255,255,255,0.05)'
+        }}
+      >
+        <div style={{ width: '2px', height: '50px', backgroundColor: 'rgba(185, 28, 28, 0.5)' }} />
       </div>
 
       <DiningExperience />
 
-      {/* Structural Spacer 4 */}
-      <div className="w-full h-32 md:h-48 bg-black flex items-center justify-center border-t border-b border-white/5">
-        <div className="w-1 h-8 bg-gold/50" />
+      {/* ========== SECTION SPACER 4 ========== */}
+      <div
+        style={{
+          width: '100%',
+          minHeight: '120px',
+          backgroundColor: '#0A0A0A',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        <div style={{ width: '2px', height: '40px', backgroundColor: 'rgba(217, 119, 6, 0.5)' }} />
       </div>
 
       <CTASection />

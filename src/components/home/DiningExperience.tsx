@@ -12,7 +12,7 @@ const features = [
 
 export default function DiningExperience() {
     return (
-        <section className="mt-24 md:mt-32 lg:mt-40 py-28 md:py-32 bg-charcoal relative z-10 overflow-hidden">
+        <section style={{ marginTop: '80px' }} className="py-28 md:py-32 bg-charcoal relative z-10 overflow-hidden">
             {/* Top Divider Line */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-crimson/40 to-transparent" />
 
