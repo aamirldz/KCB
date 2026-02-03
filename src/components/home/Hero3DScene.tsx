@@ -84,23 +84,25 @@ function PhotorealisticBowl({ position, scale = 1 }: { position: [number, number
 
     return (
         <group ref={groupRef} position={position} scale={scale}>
-            {/* Main Bowl - Bright Cream/Tan like reference image */}
+            {/* Main Bowl - VERY Bright Tan/Beige like reference image */}
             <mesh geometry={bowlGeometry} castShadow receiveShadow>
                 <meshStandardMaterial
-                    color="#c9a86c"
-                    roughness={0.35}
-                    metalness={0.1}
-                    emissive="#8b7355"
-                    emissiveIntensity={0.15}
+                    color="#e8d4b0"
+                    roughness={0.25}
+                    metalness={0.05}
+                    emissive="#d4b896"
+                    emissiveIntensity={0.5}
                     side={THREE.DoubleSide}
                 />
             </mesh>
 
-            {/* Inner bowl surface - darker for depth */}
-            <mesh geometry={bowlGeometry} scale={0.97}>
+            {/* Inner bowl surface - warm brown for depth */}
+            <mesh geometry={bowlGeometry} scale={0.96}>
                 <meshStandardMaterial
-                    color="#3d2817"
-                    roughness={0.5}
+                    color="#5a3d25"
+                    roughness={0.4}
+                    emissive="#3d2817"
+                    emissiveIntensity={0.2}
                     side={THREE.FrontSide}
                 />
             </mesh>
