@@ -777,36 +777,40 @@ function ResponsiveBowl() {
     const isMobile = size.width < 768;
     const isTablet = size.width >= 768 && size.width < 1024;
 
-    // Position on LEFT side, much larger scale
-    const posX = isMobile ? -0.5 : isTablet ? -2.0 : -2.8;
-    const posY = isMobile ? 0.0 : -0.6;
-    const posZ = isMobile ? -1 : -0.5;
-    const scale = isMobile ? 2.5 : isTablet ? 4.5 : 5.5;
+    // Position on LEFT side - bowl should fill left portion of screen
+    const posX = isMobile ? 0 : isTablet ? -3.5 : -5.0;
+    const posY = isMobile ? -0.5 : -1.5;
+    const posZ = isMobile ? 0 : 1.0;
+    const scale = isMobile ? 2.0 : isTablet ? 4.0 : 5.0;
+    // Tilt the bowl to show the inside like reference
+    const rotX = isMobile ? 0.1 : 0.25;
+    const rotY = isMobile ? 0 : 0.3;
 
     return (
-        <group position={[posX, posY, posZ]}>
+        <group position={[posX, posY, posZ]} rotation={[rotX, rotY, 0]}>
             <PhotorealisticBowl position={[0, 0, 0]} scale={scale} />
         </group>
     );
 }
 
-// Responsive Camera - adjusted for left-side bowl
+// Responsive Camera - adjusted to show large bowl on left
 function ResponsiveCameraRig() {
     const { camera, pointer, size } = useThree();
     const isMobile = size.width < 768;
     const isTablet = size.width >= 768 && size.width < 1024;
-    const lookX = isMobile ? -0.3 : isTablet ? -1.0 : -1.2;
+    // Look more to the center/right to keep bowl on left as background
+    const lookX = isMobile ? 0 : isTablet ? 0.5 : 1.0;
 
     useFrame((state) => {
         const t = state.clock.elapsedTime;
-        const targetX = isMobile ? 0 : pointer.x * 0.08 + Math.sin(t * 0.04) * 0.04;
-        const targetY = pointer.y * 0.08 + 0.30;
+        const targetX = isMobile ? 0 : pointer.x * 0.05 + Math.sin(t * 0.04) * 0.03;
+        const targetY = pointer.y * 0.05 + 0.5;
 
         camera.position.x = THREE.MathUtils.lerp(camera.position.x, targetX, 0.005);
         camera.position.y = THREE.MathUtils.lerp(camera.position.y, targetY, 0.005);
-        camera.lookAt(lookX, 0.30, 0);
+        camera.lookAt(lookX, 0.0, 0);
 
-        const targetFov = isMobile ? 48 : isTablet ? 38 : 32;
+        const targetFov = isMobile ? 50 : isTablet ? 42 : 38;
         (camera as THREE.PerspectiveCamera).fov = THREE.MathUtils.lerp(
             (camera as THREE.PerspectiveCamera).fov,
             targetFov,
