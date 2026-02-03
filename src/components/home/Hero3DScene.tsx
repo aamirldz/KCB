@@ -84,20 +84,24 @@ function PhotorealisticBowl({ position, scale = 1 }: { position: [number, number
 
     return (
         <group ref={groupRef} position={position} scale={scale}>
-            {/* Main Bowl - Golden/Bronze Ceramic like reference */}
+            {/* Main Bowl - Bright Cream/Tan like reference image */}
             <mesh geometry={bowlGeometry} castShadow receiveShadow>
-                <meshPhysicalMaterial
-                    color="#b87333"
-                    roughness={0.15}
-                    metalness={0.45}
-                    clearcoat={0.8}
-                    clearcoatRoughness={0.05}
-                    reflectivity={1.5}
-                    envMapIntensity={2.5}
-                    sheen={0.3}
-                    sheenRoughness={0.3}
-                    sheenColor="#daa520"
+                <meshStandardMaterial
+                    color="#c9a86c"
+                    roughness={0.35}
+                    metalness={0.1}
+                    emissive="#8b7355"
+                    emissiveIntensity={0.15}
                     side={THREE.DoubleSide}
+                />
+            </mesh>
+
+            {/* Inner bowl surface - darker for depth */}
+            <mesh geometry={bowlGeometry} scale={0.97}>
+                <meshStandardMaterial
+                    color="#3d2817"
+                    roughness={0.5}
+                    side={THREE.FrontSide}
                 />
             </mesh>
 
@@ -392,17 +396,18 @@ function RealisticChopsticksNoodles() {
         const t = state.clock.elapsedTime;
 
         if (groupRef.current) {
-            // Natural lifting motion with tremor
-            const primaryLift = Math.sin(t * 0.16) * 0.20;
-            const secondaryLift = Math.sin(t * 0.38) * 0.07;
-            const breathe = Math.sin(t * 0.65) * 0.025;
-            const tremor = Math.sin(t * 8.5) * 0.003; // Subtle hand shake
+            // Smooth, realistic lifting motion - slower and more natural
+            const primaryLift = Math.sin(t * 0.08) * 0.15;  // Slower, gentler
+            const secondaryLift = Math.sin(t * 0.20) * 0.04;
+            const breathe = Math.sin(t * 0.35) * 0.015;
+            // Removed tremor for smoother look
 
-            groupRef.current.position.y = 1.60 + primaryLift + secondaryLift + breathe + tremor;
+            groupRef.current.position.y = 1.60 + primaryLift + secondaryLift + breathe;
 
-            groupRef.current.rotation.z = Math.sin(t * 0.14) * 0.032 + Math.sin(t * 6) * 0.002;
-            groupRef.current.rotation.x = -0.28 + Math.sin(t * 0.12) * 0.032;
-            groupRef.current.rotation.y = 0.42 + Math.sin(t * 0.08) * 0.028;
+            // Gentle, smooth rotation
+            groupRef.current.rotation.z = Math.sin(t * 0.07) * 0.020;
+            groupRef.current.rotation.x = -0.28 + Math.sin(t * 0.06) * 0.018;
+            groupRef.current.rotation.y = 0.42 + Math.sin(t * 0.04) * 0.015;
         }
 
         // Animate noodles with organic physics
@@ -771,20 +776,20 @@ function RealisticSteamSystem() {
     );
 }
 
-// Responsive Bowl Container - Large golden bowl on LEFT side like reference
+// Responsive Bowl Container - Large cream/tan bowl on LEFT side like reference
 function ResponsiveBowl() {
     const { size } = useThree();
     const isMobile = size.width < 768;
     const isTablet = size.width >= 768 && size.width < 1024;
 
-    // Position on LEFT side - bowl should fill left portion of screen
-    const posX = isMobile ? 0 : isTablet ? -3.5 : -5.0;
-    const posY = isMobile ? -0.5 : -1.5;
-    const posZ = isMobile ? 0 : 1.0;
-    const scale = isMobile ? 2.0 : isTablet ? 4.0 : 5.0;
-    // Tilt the bowl to show the inside like reference
-    const rotX = isMobile ? 0.1 : 0.25;
-    const rotY = isMobile ? 0 : 0.3;
+    // Position bowl on LEFT side - VERY large to fill background like reference
+    const posX = isMobile ? -1.0 : isTablet ? -4.5 : -6.5;
+    const posY = isMobile ? -0.8 : -2.0;
+    const posZ = isMobile ? 0.5 : 2.5;  // Bring closer to camera
+    const scale = isMobile ? 3.0 : isTablet ? 5.5 : 7.0;  // MUCH larger
+    // Tilt to show the inside like reference
+    const rotX = isMobile ? 0.15 : 0.35;
+    const rotY = isMobile ? 0.1 : 0.4;
 
     return (
         <group position={[posX, posY, posZ]} rotation={[rotX, rotY, 0]}>
