@@ -84,19 +84,19 @@ function PhotorealisticBowl({ position, scale = 1 }: { position: [number, number
 
     return (
         <group ref={groupRef} position={position} scale={scale}>
-            {/* Main Bowl - Glossy Black Ceramic with Subsurface */}
+            {/* Main Bowl - Golden/Bronze Ceramic like reference */}
             <mesh geometry={bowlGeometry} castShadow receiveShadow>
                 <meshPhysicalMaterial
-                    color="#3a0a0a"
-                    roughness={0.025}
-                    metalness={0.005}
-                    clearcoat={1}
-                    clearcoatRoughness={0.008}
-                    reflectivity={2.0}
-                    envMapIntensity={4.0}
-                    sheen={0.5}
-                    sheenRoughness={0.2}
-                    sheenColor="#5a1515"
+                    color="#b87333"
+                    roughness={0.15}
+                    metalness={0.45}
+                    clearcoat={0.8}
+                    clearcoatRoughness={0.05}
+                    reflectivity={1.5}
+                    envMapIntensity={2.5}
+                    sheen={0.3}
+                    sheenRoughness={0.3}
+                    sheenColor="#daa520"
                     side={THREE.DoubleSide}
                 />
             </mesh>
@@ -771,29 +771,31 @@ function RealisticSteamSystem() {
     );
 }
 
-// Responsive Bowl Container
+// Responsive Bowl Container - Large golden bowl on LEFT side like reference
 function ResponsiveBowl() {
     const { size } = useThree();
     const isMobile = size.width < 768;
     const isTablet = size.width >= 768 && size.width < 1024;
 
-    const posX = isMobile ? 0 : isTablet ? 0.50 : 0.75;
-    const posY = isMobile ? 0.18 : -0.32;
-    const scale = isMobile ? 1.75 : isTablet ? 2.4 : 2.9;
+    // Position on LEFT side, much larger scale
+    const posX = isMobile ? -0.5 : isTablet ? -2.0 : -2.8;
+    const posY = isMobile ? 0.0 : -0.6;
+    const posZ = isMobile ? -1 : -0.5;
+    const scale = isMobile ? 2.5 : isTablet ? 4.5 : 5.5;
 
     return (
-        <group position={[posX, posY, 0]}>
+        <group position={[posX, posY, posZ]}>
             <PhotorealisticBowl position={[0, 0, 0]} scale={scale} />
         </group>
     );
 }
 
-// Responsive Camera
+// Responsive Camera - adjusted for left-side bowl
 function ResponsiveCameraRig() {
     const { camera, pointer, size } = useThree();
     const isMobile = size.width < 768;
     const isTablet = size.width >= 768 && size.width < 1024;
-    const lookX = isMobile ? 0 : isTablet ? 0.50 : 0.75;
+    const lookX = isMobile ? -0.3 : isTablet ? -1.0 : -1.2;
 
     useFrame((state) => {
         const t = state.clock.elapsedTime;
@@ -804,7 +806,7 @@ function ResponsiveCameraRig() {
         camera.position.y = THREE.MathUtils.lerp(camera.position.y, targetY, 0.005);
         camera.lookAt(lookX, 0.30, 0);
 
-        const targetFov = isMobile ? 44 : isTablet ? 34 : 28;
+        const targetFov = isMobile ? 48 : isTablet ? 38 : 32;
         (camera as THREE.PerspectiveCamera).fov = THREE.MathUtils.lerp(
             (camera as THREE.PerspectiveCamera).fov,
             targetFov,
