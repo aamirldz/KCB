@@ -87,7 +87,7 @@ function PhotorealisticBowl({ position, scale = 1 }: { position: [number, number
             {/* Main Bowl - Glossy Black Ceramic with Subsurface */}
             <mesh geometry={bowlGeometry} castShadow receiveShadow>
                 <meshPhysicalMaterial
-                    color="#050505"
+                    color="#3a0a0a"
                     roughness={0.025}
                     metalness={0.005}
                     clearcoat={1}
@@ -96,14 +96,14 @@ function PhotorealisticBowl({ position, scale = 1 }: { position: [number, number
                     envMapIntensity={4.0}
                     sheen={0.5}
                     sheenRoughness={0.2}
-                    sheenColor="#1a1a2e}
+                    sheenColor="#5a1515"
                     side={THREE.DoubleSide}
                 />
             </mesh>
 
             {/* Luxury Gold Rim System */}
             <PremiumGoldRim />
-            
+
             {/* Decorative Pattern */}
             <OrientalPattern />
 
