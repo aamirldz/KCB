@@ -4,8 +4,8 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
-// Dynamically import 3D scene with no SSR for the ultra-premium bowl animation
-const Hero3DScene = dynamic(() => import('./Hero3DScene'), {
+// Dynamically import Canvas bowl animation with no SSR
+const HeroBowlCanvas = dynamic(() => import('./HeroBowlCanvas'), {
     ssr: false,
     loading: () => (
         <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0502] to-black">
@@ -18,8 +18,8 @@ const Hero3DScene = dynamic(() => import('./Hero3DScene'), {
 export default function Hero() {
     return (
         <section className="min-h-screen flex flex-col bg-black relative overflow-hidden">
-            {/* Ultra Premium 3D Bowl Animation Background */}
-            <Hero3DScene />
+            {/* Ultra Premium Bowl Animation Background */}
+            <HeroBowlCanvas />
 
             {/* Main Content */}
             <div className="flex-1 flex items-center relative z-10 pt-24 pb-10">
