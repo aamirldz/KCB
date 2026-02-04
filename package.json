@@ -1,11 +1,11 @@
 {
   "name": "king-chinese-bowl",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "rm -rf .next .open-next",
-    "build": "next build",
+    "prebuild": "rm -rf .next .open-next node_modules/.cache",
+    "build": "rm -rf .next && next build",
     "start": "next start",
     "lint": "eslint",
     "cf:build": "rm -rf .open-next && npx @opennextjs/cloudflare build",
