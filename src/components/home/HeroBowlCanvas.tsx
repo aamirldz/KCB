@@ -8,7 +8,7 @@ import React, { useRef, useEffect, useState } from 'react';
 // Cinematic, warm, premium restaurant aesthetic
 // ============================================
 
-export default function Hero3DScene() {
+export default function HeroBowlCanvas() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
