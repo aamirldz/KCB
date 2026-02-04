@@ -654,6 +654,103 @@ function RealisticSteam() {
     );
 }
 
+// ========================================
+// LARGE BACKGROUND BOWL (Left side - like reference image)
+// ========================================
+function LargeBackgroundBowl() {
+    const groupRef = useRef<THREE.Group>(null);
+    const { size } = useThree();
+    const isMobile = size.width < 768;
+    const isTablet = size.width >= 768 && size.width < 1024;
+
+    // Create realistic bowl shape - wide and elegant
+    const bowlGeometry = useMemo(() => {
+        const points: THREE.Vector2[] = [];
+        const segments = 80;
+
+        for (let i = 0; i <= segments; i++) {
+            const t = i / segments;
+            const y = -1.0 + t * 2.0;
+            let x: number;
+
+            if (t < 0.08) {
+                // Flat bottom
+                x = 0.15 + Math.pow(t / 0.08, 0.5) * 0.35;
+            } else if (t < 0.85) {
+                // Elegant curved body
+                const blend = (t - 0.08) / 0.77;
+                x = 0.50 + blend * 1.15 + Math.sin(blend * Math.PI * 0.8) * 0.15;
+            } else {
+                // Thick rim with lip
+                const rimT = (t - 0.85) / 0.15;
+                x = 1.65 + Math.sin(rimT * Math.PI * 0.6) * 0.12;
+                if (rimT > 0.8) {
+                    x -= (rimT - 0.8) * 0.3;
+                }
+            }
+            points.push(new THREE.Vector2(x, y));
+        }
+        return new THREE.LatheGeometry(points, 160);
+    }, []);
+
+    // Gentle floating animation
+    useFrame((state) => {
+        const t = state.clock.elapsedTime;
+        if (groupRef.current) {
+            groupRef.current.rotation.y = t * 0.015;
+            groupRef.current.position.y = Math.sin(t * 0.2) * 0.05;
+        }
+    });
+
+    // Responsive positioning - large on left side (matching reference image)
+    const posX = isMobile ? -2 : isTablet ? -5 : -7.5;
+    const posY = isMobile ? -1.5 : -2.5;
+    const posZ = isMobile ? 0 : 2;
+    const scale = isMobile ? 2.5 : isTablet ? 4.5 : 6.5;
+    const rotX = isMobile ? 0.2 : 0.4;
+    const rotY = isMobile ? 0.2 : 0.5;
+
+    return (
+        <group ref={groupRef} position={[posX, posY, posZ]} rotation={[rotX, rotY, 0]} scale={scale}>
+            {/* Outer bowl - Bright tan/beige ceramic (matching reference) */}
+            <mesh geometry={bowlGeometry} castShadow receiveShadow>
+                <meshStandardMaterial
+                    color="#d4bc94"
+                    roughness={0.35}
+                    metalness={0.02}
+                    emissive="#c9a86c"
+                    emissiveIntensity={0.35}
+                    side={THREE.DoubleSide}
+                />
+            </mesh>
+
+            {/* Inner bowl - Dark wood/ceramic interior */}
+            <mesh geometry={bowlGeometry} scale={0.94}>
+                <meshStandardMaterial
+                    color="#2a1810"
+                    roughness={0.5}
+                    metalness={0.0}
+                    emissive="#1a0f0a"
+                    emissiveIntensity={0.15}
+                    side={THREE.FrontSide}
+                />
+            </mesh>
+
+            {/* Gold rim band */}
+            <mesh position={[0, 0.98, 0]} rotation={[Math.PI / 2, 0, 0]}>
+                <torusGeometry args={[1.70, 0.045, 32, 128]} />
+                <meshStandardMaterial
+                    color="#c9a034"
+                    metalness={0.95}
+                    roughness={0.1}
+                    emissive="#a08020"
+                    emissiveIntensity={0.4}
+                />
+            </mesh>
+        </group>
+    );
+}
+
 // Responsive Bowl Container
 function ResponsiveBowl() {
     const { size } = useThree();
@@ -716,6 +813,8 @@ export default function Hero3DScene() {
                     <pointLight position={[5, 5, 5]} intensity={0.35} color="#fff8e0" />
                     <spotLight position={[0, 12, 0]} intensity={0.5} angle={0.4} penumbra={0.6} color="#fff" />
 
+                    {/* Large Background Bowl on Left (like reference image) */}
+                    <LargeBackgroundBowl />
                     <ResponsiveBowl />
                     <ResponsiveCameraRig />
                 </Suspense>
