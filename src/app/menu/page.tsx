@@ -44,7 +44,7 @@ export default function MenuPage() {
                             <div className="h-px w-8 bg-gold/50" />
                         </div>
                         <h1 className="text-white text-4xl md:text-5xl font-display mb-4">Our Menu</h1>
-                        <p className="text-light-gray max-w-xl mx-auto">
+                        <p className="text-light-gray max-w-xl mx-auto text-center">
                             Explore our curated selection of authentic Asian dishes
                         </p>
                     </div>
@@ -84,7 +84,7 @@ export default function MenuPage() {
                     </div>
 
                     {filteredItems.length > 0 ? (
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-0">
                             {filteredItems.map((item) => (
                                 <MenuCard key={item.id} item={item} onViewDetails={() => setSelectedItem(item)} />
                             ))}
