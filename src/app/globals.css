@@ -94,11 +94,6 @@ body {
   min-height: 100vh;
 }
 
-/* Main content offset for fixed header */
-.main-content {
-  padding-top: 80px;
-}
-
 /* Typography */
 h1,
 h2,
@@ -363,26 +358,6 @@ a {
 .section {
   padding-top: var(--section-y);
   padding-bottom: var(--section-y);
-}
-
-/* Section Spacing - guaranteed vertical gaps between home page sections */
-.section-spacing {
-  margin-top: 6rem;
-  /* 96px on mobile */
-}
-
-@media (min-width: 768px) {
-  .section-spacing {
-    margin-top: 8rem;
-    /* 128px on tablet */
-  }
-}
-
-@media (min-width: 1024px) {
-  .section-spacing {
-    margin-top: 10rem;
-    /* 160px on desktop */
-  }
 }
 
 /* Text Colors */

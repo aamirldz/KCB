@@ -20,15 +20,12 @@ export default function SignatureDishes() {
     };
 
     return (
-        <section style={{ marginTop: '80px' }} className="py-28 md:py-32 bg-charcoal relative overflow-hidden">
-            {/* Top Divider Line */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-crimson/40 to-transparent" />
-
+        <section className="py-24 bg-charcoal relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-crimson/5 rounded-full blur-[150px]" />
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-gold/5 rounded-full blur-[120px]" />
 
-            <div className="container relative z-10 pt-8 md:pt-12">
+            <div className="container relative z-10">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
                     <div>
