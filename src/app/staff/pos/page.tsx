@@ -15,6 +15,7 @@ export default function POSPage() {
     const [cartItems, setCartItems] = useState<OrderItem[]>([]);
     const [activeCategory, setActiveCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
+    const [vegOnly, setVegOnly] = useState(false);
     const [orderType, setOrderType] = useState<OrderType>('dine-in');
     const [tableNumber, setTableNumber] = useState('');
     const [customerName, setCustomerName] = useState('');
@@ -31,9 +32,10 @@ export default function POSPage() {
         return menuItems.filter((item) => {
             if (activeCategory !== 'all' && item.category !== activeCategory) return false;
             if (searchQuery && !item.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+            if (vegOnly && !item.isVeg) return false;
             return true;
         });
-    }, [activeCategory, searchQuery]);
+    }, [activeCategory, searchQuery, vegOnly]);
 
     const handleAddItem = useCallback((item: any) => {
         setCartItems((prev) => {
@@ -108,39 +110,54 @@ export default function POSPage() {
             <div className="min-h-[calc(100vh-5rem)] flex">
                 {/* Left: Menu */}
                 <div className="flex-1 flex flex-col min-w-0">
-                    {/* Categories */}
-                    <div className="p-3 bg-black/30 border-b border-dark-gray flex items-center gap-3">
-                        <div className="relative flex-1 max-w-xs">
-                            <input
-                                type="text"
-                                placeholder="Search..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full px-3 py-2 pl-9 bg-charcoal border border-gray/20 text-white text-sm placeholder-gray focus:border-crimson/50 outline-none"
-                            />
-                            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {/* Search + Categories + Veg Toggle */}
+                    <div className="p-3 bg-black/30 border-b border-dark-gray space-y-3">
+                        {/* Search */}
+                        <div className="relative max-w-xs">
+                            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
+                            <input
+                                type="text"
+                                placeholder="Search dishes..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full px-3 py-2 pl-9 bg-dark-gray border border-gray/30 rounded-full text-white text-sm placeholder-gray focus:border-crimson outline-none"
+                            />
                         </div>
-                        <div className="flex gap-1 overflow-x-auto flex-1 scrollbar-hide">
+                        {/* Categories Row */}
+                        <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide">
                             {allCategories.map((cat) => (
                                 <button
                                     key={cat.id}
                                     onClick={() => setActiveCategory(cat.id)}
-                                    className={`px-3 py-1.5 text-xs font-medium whitespace-nowrap transition-all ${activeCategory === cat.id
-                                        ? 'bg-crimson text-white'
-                                        : 'bg-charcoal text-gray hover:text-white'
+                                    className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl backdrop-blur-sm transition-all min-w-[50px] ${activeCategory === cat.id
+                                        ? 'bg-crimson/90 text-white shadow-lg shadow-crimson/30'
+                                        : 'bg-white/5 border border-white/10 text-gray hover:bg-white/10 hover:text-white'
                                         }`}
                                 >
-                                    {cat.icon} {cat.name}
+                                    <span className="text-lg">{cat.icon}</span>
+                                    <span className="text-[9px] font-medium whitespace-nowrap">{cat.name}</span>
                                 </button>
                             ))}
+                            {/* Divider */}
+                            <div className="w-px h-8 bg-gray/30 mx-1 flex-shrink-0" />
+                            {/* Veg Toggle */}
+                            <button
+                                onClick={() => setVegOnly(!vegOnly)}
+                                className={`flex items-center gap-2 px-3 py-2 rounded-xl backdrop-blur-sm transition-all flex-shrink-0 ${vegOnly ? 'bg-green-500/20 border border-green-500/50 text-green-400' : 'bg-white/5 border border-white/10 text-gray hover:bg-white/10'}`}
+                            >
+                                <span className="text-lg">🥬</span>
+                                <div className={`w-8 h-4 rounded-full relative transition-colors ${vegOnly ? 'bg-green-500' : 'bg-gray/40'}`}>
+                                    <div className={`absolute top-0.5 w-3 h-3 bg-white rounded-full shadow transition-all ${vegOnly ? 'left-4' : 'left-0.5'}`} />
+                                </div>
+                            </button>
                         </div>
                     </div>
 
                     {/* Menu Grid */}
-                    <div className="flex-1 overflow-y-auto p-3">
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
+                    <div className="flex-1 overflow-y-auto p-2">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-0">
                             {filteredItems.map((item, index) => (
                                 <motion.button
                                     key={item.id}
