@@ -56,40 +56,42 @@ export default function MenuFilter({
                 </div>
             </div>
 
-            {/* Categories Row + Veg Toggle - All in one line */}
-            <div className="flex items-center justify-center gap-4 md:gap-6 flex-wrap">
-                {/* Category Pills */}
-                <div className="flex items-center gap-1">
+            {/* Categories - Glass containers, horizontal scroll on mobile */}
+            <div className="overflow-x-auto scrollbar-hide -mx-4 px-4">
+                <div className="flex items-center gap-2 min-w-max justify-center">
                     {allCategories.map((category) => (
                         <button
                             key={category.id}
                             onClick={() => onCategoryChange(category.id)}
-                            className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-medium transition-all ${activeCategory === category.id
-                                    ? 'bg-crimson/15 text-crimson border border-crimson/40'
-                                    : 'text-gray hover:text-white'
+                            className={`flex flex-col items-center gap-1 px-4 py-2.5 rounded-xl backdrop-blur-sm transition-all min-w-[60px] ${activeCategory === category.id
+                                    ? 'bg-crimson/90 text-white shadow-lg shadow-crimson/30'
+                                    : 'bg-white/5 border border-white/10 text-gray hover:bg-white/10 hover:text-white'
                                 }`}
                         >
-                            <span className="text-lg">{category.icon}</span>
-                            <span className="hidden sm:inline">{category.name}</span>
+                            <span className="text-xl">{category.icon}</span>
+                            <span className="text-[10px] font-medium whitespace-nowrap">{category.name}</span>
                         </button>
                     ))}
+
+                    {/* Divider */}
+                    <div className="w-px h-10 bg-gray/30 mx-1" />
+
+                    {/* Veg Toggle Switch */}
+                    <button
+                        onClick={() => onVegOnlyChange(!vegOnly)}
+                        className={`flex items-center gap-2 px-3 py-2.5 rounded-xl backdrop-blur-sm transition-all ${vegOnly
+                                ? 'bg-green-500/20 border border-green-500/50 text-green-400'
+                                : 'bg-white/5 border border-white/10 text-gray hover:bg-white/10'
+                            }`}
+                    >
+                        <span className="text-lg">🥬</span>
+                        <div className={`w-10 h-5 rounded-full relative transition-colors ${vegOnly ? 'bg-green-500' : 'bg-gray/40'
+                            }`}>
+                            <div className={`absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-all ${vegOnly ? 'left-5' : 'left-0.5'
+                                }`} />
+                        </div>
+                    </button>
                 </div>
-
-                {/* Divider */}
-                <div className="w-px h-6 bg-gray/30 hidden sm:block" />
-
-                {/* Veg Toggle */}
-                <button
-                    onClick={() => onVegOnlyChange(!vegOnly)}
-                    className={`flex items-center gap-2 text-sm font-medium transition-all ${vegOnly ? 'text-green-400' : 'text-gray hover:text-white'
-                        }`}
-                >
-                    <div className={`w-4 h-4 border-2 rounded flex items-center justify-center transition-colors ${vegOnly ? 'border-green-500 bg-green-500/20' : 'border-gray/50'
-                        }`}>
-                        {vegOnly && <div className="w-2 h-2 bg-green-500 rounded-full" />}
-                    </div>
-                    <span>Veg</span>
-                </button>
             </div>
         </div>
     );
