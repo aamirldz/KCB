@@ -30,6 +30,14 @@ export default function MenuFilter({
             {/* Search Bar */}
             <div className="max-w-md mx-auto">
                 <div className="relative">
+                    <svg
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray pointer-events-none"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
                     <input
                         type="text"
                         placeholder="Search for dishes..."
@@ -37,14 +45,6 @@ export default function MenuFilter({
                         onChange={(e) => onSearchChange(e.target.value)}
                         className="w-full h-11 pl-11 pr-10 bg-dark-gray border border-gray/30 rounded-full text-white text-sm placeholder-gray focus:border-crimson focus:outline-none transition-colors"
                     />
-                    <svg
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
                     {searchQuery && (
                         <button
                             onClick={() => onSearchChange('')}
@@ -57,8 +57,8 @@ export default function MenuFilter({
             </div>
 
             {/* Categories Row + Veg Toggle - All in one line */}
-            <div className="flex items-center justify-center gap-6 flex-wrap">
-                {/* Category Pills - No box, just text */}
+            <div className="flex items-center justify-center gap-4 md:gap-6 flex-wrap">
+                {/* Category Pills */}
                 <div className="flex items-center gap-1">
                     {allCategories.map((category) => (
                         <button
