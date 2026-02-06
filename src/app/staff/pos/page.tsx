@@ -157,7 +157,7 @@ export default function POSPage() {
 
                     {/* Menu Grid */}
                     <div className="flex-1 overflow-y-auto p-2">
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-0">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
                             {filteredItems.map((item, index) => (
                                 <motion.button
                                     key={item.id}
