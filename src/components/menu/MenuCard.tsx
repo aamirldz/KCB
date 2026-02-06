@@ -3,7 +3,6 @@
 import React from 'react';
 import { MenuItem } from '@/types/menu';
 import { formatPrice, getSpiceLevelEmoji } from '@/lib/utils';
-import { useCart } from '@/context/CartContext';
 
 interface MenuCardProps {
     item: MenuItem;
@@ -11,15 +10,6 @@ interface MenuCardProps {
 }
 
 export default function MenuCard({ item, onViewDetails }: MenuCardProps) {
-    const { addToCart } = useCart();
-    const [isAdding, setIsAdding] = React.useState(false);
-
-    const handleAddToCart = () => {
-        setIsAdding(true);
-        addToCart(item);
-        setTimeout(() => setIsAdding(false), 600);
-    };
-
     const getCategoryEmoji = (category: string) => {
         switch (category) {
             case 'bowls': return '🍜';
@@ -33,92 +23,87 @@ export default function MenuCard({ item, onViewDetails }: MenuCardProps) {
     };
 
     return (
-        <div className="bg-gradient-to-br from-charcoal to-dark-gray border border-gray/15 overflow-hidden group hover:border-crimson/50 hover:shadow-[0_0_25px_rgba(185,28,28,0.15)] transition-all duration-300">
-            {/* Image */}
-            <div className="relative h-44 bg-gradient-to-br from-crimson/15 via-dark-gray to-charcoal flex items-center justify-center overflow-hidden">
-                {/* Hover glow */}
-                <div className="absolute inset-0 bg-crimson/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="group relative bg-gradient-to-br from-charcoal via-dark-gray to-charcoal border border-gray/20 rounded-2xl overflow-hidden hover:border-crimson/60 hover:shadow-[0_8px_40px_rgba(185,28,28,0.25)] transition-all duration-500">
+            {/* Hover gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-crimson/10 via-transparent to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                <span className="text-6xl transition-transform duration-500 group-hover:scale-110">
+            {/* Image Section */}
+            <div className="relative h-48 bg-gradient-to-br from-crimson/20 via-dark-gray to-charcoal flex items-center justify-center overflow-hidden">
+                {/* Animated background on hover */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(185,28,28,0.2),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                <span className="text-7xl drop-shadow-2xl transition-all duration-500 group-hover:scale-125 group-hover:rotate-3">
                     {getCategoryEmoji(item.category)}
                 </span>
 
-                {/* Veg/Non-veg Badge */}
-                <div className="absolute top-3 left-3">
-                    <div className={`w-5 h-5 border-2 ${item.isVeg ? 'border-green-500' : 'border-crimson'} flex items-center justify-center bg-black/50`}>
-                        <div className={`w-2.5 h-2.5 ${item.isVeg ? 'bg-green-500' : 'bg-crimson'} rounded-full`} />
+                {/* Veg/Non-veg Badge - Top Left */}
+                <div className="absolute top-4 left-4">
+                    <div className={`w-6 h-6 border-2 rounded ${item.isVeg ? 'border-green-500 bg-green-500/20' : 'border-crimson bg-crimson/20'} backdrop-blur-sm flex items-center justify-center`}>
+                        <div className={`w-3 h-3 ${item.isVeg ? 'bg-green-500' : 'bg-crimson'} rounded-full`} />
                     </div>
                 </div>
 
-                {/* Tags */}
+                {/* Tags - Top Right */}
                 {item.tags.length > 0 && (
-                    <div className="absolute top-3 right-3 flex flex-col gap-1">
+                    <div className="absolute top-4 right-4 flex flex-col gap-2">
                         {item.tags.includes('popular') && (
-                            <span className="px-2 py-1 bg-gradient-to-r from-gold to-gold-light text-black text-[10px] font-bold uppercase tracking-wider shadow-lg">
+                            <span className="px-3 py-1.5 bg-gradient-to-r from-gold via-gold-light to-gold text-black text-[10px] font-bold uppercase tracking-wider rounded-full shadow-[0_2px_10px_rgba(217,119,6,0.5)]">
                                 🔥 Popular
                             </span>
                         )}
                         {item.tags.includes('chef-special') && (
-                            <span className="px-2 py-1 bg-crimson text-white text-[10px] font-bold uppercase tracking-wider shadow-lg">
-                                Chef&apos;s Pick
+                            <span className="px-3 py-1.5 bg-gradient-to-r from-crimson to-crimson-dark text-white text-[10px] font-bold uppercase tracking-wider rounded-full shadow-[0_2px_10px_rgba(185,28,28,0.5)]">
+                                ⭐ Chef&apos;s Pick
                             </span>
                         )}
                         {item.tags.includes('new') && (
-                            <span className="px-2 py-1 bg-green-600 text-white text-[10px] font-bold uppercase tracking-wider shadow-lg">
-                                New
+                            <span className="px-3 py-1.5 bg-gradient-to-r from-green-500 to-green-600 text-white text-[10px] font-bold uppercase tracking-wider rounded-full shadow-[0_2px_10px_rgba(34,197,94,0.5)]">
+                                ✨ New
                             </span>
                         )}
                     </div>
                 )}
             </div>
 
-            {/* Content */}
-            <div className="p-5">
-                <div className="flex items-start justify-between gap-2 mb-2">
-                    <h4 className="text-white font-semibold text-base group-hover:text-gold transition-colors line-clamp-1">
+            {/* Content Section */}
+            <div className="p-5 relative z-10">
+                {/* Title & Spice */}
+                <div className="flex items-start justify-between gap-3 mb-3">
+                    <h4 className="text-white font-semibold text-lg leading-tight group-hover:text-gold transition-colors duration-300 line-clamp-1">
                         {item.name}
                     </h4>
                     {item.spiceLevel > 0 && (
-                        <span className="flex-shrink-0 text-sm" title={`Spice Level: ${item.spiceLevel}`}>
+                        <span className="flex-shrink-0 text-lg" title={`Spice Level: ${item.spiceLevel}`}>
                             {getSpiceLevelEmoji(item.spiceLevel)}
                         </span>
                     )}
                 </div>
 
-                <p className="text-gray text-sm mb-4 line-clamp-2 leading-relaxed">
+                {/* Description */}
+                <p className="text-gray text-sm mb-5 line-clamp-2 leading-relaxed">
                     {item.description}
                 </p>
 
-                {/* Price & Actions */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray/10">
-                    <span className="text-gold font-display text-xl">
+                {/* Price & Add Button */}
+                <div className="flex items-center justify-between pt-4 border-t border-gray/15">
+                    <span className="text-gold font-display text-2xl drop-shadow-[0_0_10px_rgba(217,119,6,0.3)]">
                         {formatPrice(item.price)}
                     </span>
 
-                    <div className="flex gap-2">
-                        {onViewDetails && (
-                            <button
-                                onClick={onViewDetails}
-                                className="p-2.5 bg-dark-gray/50 text-gray hover:text-gold hover:bg-dark-gray border border-gray/10 hover:border-gold/30 transition-all"
-                                aria-label="View details"
-                            >
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                </svg>
-                            </button>
-                        )}
-
-                        <button
-                            onClick={handleAddToCart}
-                            className={`px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all ${isAdding
-                                    ? 'bg-green-600 text-white shadow-[0_0_15px_rgba(34,197,94,0.4)]'
-                                    : 'bg-crimson text-white hover:bg-crimson-light hover:shadow-[0_0_15px_rgba(185,28,28,0.4)]'
-                                }`}
-                        >
-                            {isAdding ? '✓ Added' : 'Add +'}
-                        </button>
-                    </div>
+                    {/* Add Button - Opens Modal */}
+                    <button
+                        onClick={onViewDetails}
+                        className="group/btn relative px-6 py-2.5 bg-gradient-to-r from-crimson to-crimson-dark text-white text-sm font-bold uppercase tracking-wider rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_4px_20px_rgba(185,28,28,0.5)] hover:scale-105 active:scale-95"
+                    >
+                        {/* Button shine effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
+                        <span className="relative z-10 flex items-center gap-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                            </svg>
+                            Add
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
