@@ -153,3 +153,25 @@ export const menuItems: MenuItem[] = [
         tags: [],
     },
 ];
+
+// Helper functions
+export const getPopularItems = () => {
+    return menuItems.filter(item => item.tags.includes('popular'));
+};
+
+export const getChefSpecials = () => {
+    return menuItems.filter(item => item.tags.includes('chef-special'));
+};
+
+export const getVegItems = () => {
+    return menuItems.filter(item => item.isVeg);
+};
+
+export const getNonVegItems = () => {
+    return menuItems.filter(item => !item.isVeg);
+};
+
+export const getItemsByCategory = (category: string) => {
+    if (category === 'all') return menuItems;
+    return menuItems.filter(item => item.category === category);
+};

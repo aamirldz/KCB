@@ -14,6 +14,7 @@ export interface MenuItem {
   spiceLevel: SpiceLevel;
   image: string;
   tags: MenuTag[];
+  isAvailable?: boolean;
 }
 
 export interface MenuCategoryInfo {
